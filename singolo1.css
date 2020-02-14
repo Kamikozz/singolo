@@ -188,6 +188,11 @@ body {
 }
 
 .icon-outer {
+  float: left;
+  clear: left;
+
+  margin-right: 20px;
+
   height: 56px;
   width: 56px;
 
@@ -200,16 +205,24 @@ body {
 
 .services-list {
   display: flex;
-  
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  padding-top: 47px;
 }
 
-.test {
-  display: flex;
+.services-item {
+  width: 300px;
+  /* flex-grow: 1; */
+}
+
+.services-item:nth-child(-n + 3) {
+  margin-bottom: 32px;
 }
 
 .our-services-block .wrapper > div > div > h3 {
+  margin-bottom: 9px;
+
   font-weight: 900;
   font-size: 18px;
   color: #666d89;
@@ -218,5 +231,9 @@ body {
 .our-services-block .wrapper > div > div > p {
   font-weight: 400;
   font-size: 12px;
+  line-height: 21px;
   color: #767e9e;
+
+  text-align: justify;
+  overflow: hidden;
 }
