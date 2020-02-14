@@ -14,7 +14,6 @@ h1, h2, h3, h4, h5, h6 {
 body {
   height: 100vh;
   width: 100vw;
-  max-width: 1020px;
 
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -22,15 +21,10 @@ body {
   background-color: lightgrey;
 }
 
-.container {
+.wrapper {
+  max-width: 1020px;
   margin: 0 auto;
-}
-
-.header,
-.carousel,
-.our-services-block {
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 0 40px;
 }
 
 .header {
@@ -193,7 +187,6 @@ body {
   color: #767e9e;
 }
 
-
 .icon-outer {
   height: 56px;
   width: 56px;
@@ -216,8 +209,7 @@ body {
   display: flex;
 }
 
-
-.our-services-block > div > div > h2 {
+.our-services-block > div > div > h3 {
   font-weight: 900;
   font-size: 18px;
   color: #666d89;
