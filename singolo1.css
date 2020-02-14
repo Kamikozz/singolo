@@ -10,12 +10,13 @@ li {
   list-style: none;
 }
 
+img:focus {
+  outline: none;
+}
+
 /* main */
 
 body {
-  width: 100vw;
-  height: 100vh;
-
   font-family: "Lato", sans-serif;
   font-weight: 400;
 }
