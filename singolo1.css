@@ -170,7 +170,7 @@ body {
   border-bottom: 6px solid white;
 }
 
-.our-services-block > h2 {
+.our-services-block .wrapper > h2 {
   margin-bottom: 21px;
 
   font-weight: 900;
@@ -179,7 +179,7 @@ body {
   color: #666d89;
 }
 
-.our-services-block > p {
+.our-services-block .wrapper > p {
   font-weight: 300;
   font-size: 18px;
   letter-spacing: 0.15px;
@@ -198,7 +198,7 @@ body {
   border-radius: 50%;
 }
 
-.test-class {
+.services-list {
   display: flex;
   
   justify-content: space-around;
@@ -209,13 +209,13 @@ body {
   display: flex;
 }
 
-.our-services-block > div > div > h3 {
+.our-services-block .wrapper > div > div > h3 {
   font-weight: 900;
   font-size: 18px;
   color: #666d89;
 }
 
-.our-services-block > div > div > p {
+.our-services-block .wrapper > div > div > p {
   font-weight: 400;
   font-size: 12px;
   color: #767e9e;
