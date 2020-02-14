@@ -39,9 +39,73 @@ body {
   font-weight: bold;
   color: white;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   background-color: #2d303a;
 
   border-bottom: 6px solid #323746;
+}
+
+/* .header-inner {
+  display: flex;
+  align-items: baseline;
+} */
+
+.header h1 {
+  /* to more fit layout */
+  letter-spacing: -0.5px;
+  font-size: 25px;
+}
+
+.header h1::after {
+  content: "*";
+  color: #f06c64;
+}
+
+.header nav {
+  justify-content: space-between;
+  width: 35%;
+}
+
+.header nav ul {
+  display: flex;
+
+  justify-content: space-around;
+}
+
+.header nav li {
+  list-style: none;
+}
+
+.header nav a {
+  letter-spacing: -0.2px;
+  line-height: 12px;
+  font-size: 12px;
+  text-decoration: none;
+  color: white;
+}
+
+.header nav li::after {
+  content: "·";
+  padding-right: 15px;
+  padding-left: 15px;
+  color: #494e62;
+}
+
+.header nav li:last-child::after {
+  content: "";
+}
+
+.header nav li:first-child a {
+  color: #f06c64;
+}
+
+.header nav a:hover {
+  cursor: pointer;
+  color: #f06c64;
+  transition: color .25s ease-in;
 }
 
 /* carousel block */
