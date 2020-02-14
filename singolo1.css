@@ -118,6 +118,49 @@ body {
   border-bottom: 6px solid #ea676b;
 }
 
+.carousel-inner {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-previous-page {
+  margin-bottom: 5px;
+  margin-left: 2px;
+  transition: transform 0.3s ease, opacity 0.2s linear;
+}
+
+.icon-next-page {
+  margin-bottom: 5px;
+  transform: rotate(180deg);
+  transition: transform 0.3s ease, opacity 0.2s linear;
+}
+
+.icon-previous-page:hover,
+.icon-next-page:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.icon-previous-page:hover {
+  transform: scale(1.5);
+}
+
+.icon-next-page:hover {
+  transform: scale(1.5) rotate(180deg);
+}
+
+.iphone-vertical {
+  margin-bottom: 5px;
+  margin-right: 19px;
+}
+
+.iphone-horizontal {
+  margin-bottom: 6px;
+  margin-right: 1px;
+}
+
 /* our services block */
 
 .our-services-block {
