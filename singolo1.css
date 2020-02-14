@@ -5,8 +5,8 @@
   line-height: 1;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+li {
+  list-style: none;
 }
 
 /* main */
@@ -17,8 +17,6 @@ body {
 
   font-family: "Lato", sans-serif;
   font-weight: 400;
-
-  background-color: lightgrey;
 }
 
 .wrapper {
@@ -33,6 +31,7 @@ body {
   padding-bottom: 32px;
 
   color: white;
+  font-weight: bold;
 
   background-color: #2d303a;
 
@@ -49,26 +48,15 @@ body {
   /* to more fit layout */
   letter-spacing: -0.5px;
   font-size: 25px;
-  font-weight: bold;
-
 }
 
 .header h1::after {
   content: "*";
   color: #f06c64;
-    font-weight: bold;
-}
-
-.header nav {
-  font-weight: bold;
 }
 
 .header nav ul {
   display: flex;
-}
-
-.header nav li {
-  list-style: none;
 }
 
 .header nav a {
@@ -76,7 +64,7 @@ body {
   line-height: 12px;
   font-size: 12px;
   text-decoration: none;
-  color: white;
+  color: inherit;
 }
 
 .header nav li::after {
@@ -104,8 +92,6 @@ body {
 /* carousel block */
 
 .carousel {
-  /* height: 594px; */
-
   padding-top: 53px;
   padding-bottom: 58px;
 
@@ -115,7 +101,6 @@ body {
 }
 
 .carousel-inner {
-  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
