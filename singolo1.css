@@ -25,6 +25,7 @@ body {
   max-width: 1020px;
   margin: 0 auto;
   padding: 0 40px;
+  box-sizing: border-box;
 }
 
 .header {
@@ -109,7 +110,10 @@ body {
 /* carousel block */
 
 .carousel {
-  height: 594px;
+  /* height: 594px; */
+
+  padding-top: 53px;
+  padding-bottom: 58px;
 
   background-color: #f06c64;
 
@@ -124,13 +128,10 @@ body {
 }
 
 .icon-previous-page {
-  margin-bottom: 5px;
-  margin-left: 2px;
   transition: transform 0.3s ease, opacity 0.2s linear;
 }
 
 .icon-next-page {
-  margin-bottom: 5px;
   transform: rotate(180deg);
   transition: transform 0.3s ease, opacity 0.2s linear;
 }
@@ -150,12 +151,11 @@ body {
 }
 
 .iphone-vertical {
-  margin-bottom: 5px;
   margin-right: 19px;
 }
 
 .iphone-horizontal {
-  margin-bottom: 6px;
+  margin-bottom: 2px;
   margin-right: 1px;
 }
 
