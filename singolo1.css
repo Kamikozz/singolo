@@ -34,7 +34,8 @@ body {
 }
 
 .header {
-  height: 89px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 
   font-weight: bold;
   color: white;
@@ -65,8 +66,11 @@ body {
 }
 
 .header nav {
+  margin-top: 6px;
+
   justify-content: space-between;
-  width: 35%;
+
+  width: 36.5%;
 }
 
 .header nav ul {
