@@ -174,8 +174,12 @@ body {
   color: #666d89;
 }
 
-.our-services-block .wrapper > p {
+.our-services-block .wrapper > p::first-line {
   letter-spacing: 0.15px;
+}
+
+.our-services-block .wrapper > p {
+  letter-spacing: 0px;
   font-weight: 300;
   font-size: 1.8rem;
   line-height: 30px;
