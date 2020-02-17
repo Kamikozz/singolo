@@ -6,6 +6,10 @@
   line-height: 1;
 }
 
+html {
+  font-size: 10px;
+}
+
 li {
   list-style: none;
 }
@@ -34,6 +38,7 @@ body {
   padding-bottom: 32px;
 
   font-weight: bold;
+  text-transform: uppercase;
   color: white;
 
   background-color: #2d303a;
@@ -50,7 +55,7 @@ body {
 .header h1 {
   /* to more fit layout */
   letter-spacing: -0.5px;
-  font-size: 25px;
+  font-size: 2.5rem;
 }
 
 .header h1::after {
@@ -65,7 +70,7 @@ body {
 
 .header nav a {
   letter-spacing: -0.2px;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 12px;
   color: inherit;
 
@@ -165,14 +170,14 @@ body {
 
   letter-spacing: -0.35px;
   font-weight: 900;
-  font-size: 30px;
+  font-size: 3rem;
   color: #666d89;
 }
 
 .our-services-block .wrapper > p {
   letter-spacing: 0.15px;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 30px;
   color: #767e9e;
 }
@@ -213,13 +218,13 @@ body {
   margin-bottom: 9px;
 
   font-weight: 900;
-  font-size: 18px;
+  font-size: 1.8rem;
   color: #666d89;
 }
 
 .our-services-block .wrapper > div > div > p {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 21px;
   color: #767e9e;
 
