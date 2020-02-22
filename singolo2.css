@@ -36,13 +36,12 @@ body {
 /* portfolio block */
 
 .portfolio-block {
-  padding-top: 67px;
+  padding-top: 64px;
   padding-bottom: 67px;
 
   background-color: #2d303a;
   border-bottom: 6px solid #323746;
 }
-
 
 .portfolio-block .wrapper > h2 {
   margin-bottom: 21px;
@@ -54,10 +53,55 @@ body {
 }
 
 .portfolio-block .wrapper > p {
+  margin-bottom: 10px;
   font-weight: 300;
   font-size: 1.8rem;
   line-height: 30px;
   color: #767e9e;
+}
+
+.portfolio-block .wrapper > ul {
+  display: flex;
+  margin-bottom: 19px;
+}
+
+.portfolio-block .wrapper > ul > li {
+  margin-right: 10px;
+  padding: 1px 6px;
+  font-size: 1.2rem;
+  line-height: 18px;
+  color: #767e9e;
+
+  border: 1px solid #666d89;
+  border-radius: 5px;
+}
+
+.portfolio-block .wrapper > ul > li:hover {
+  cursor: pointer;
+  color: #dedede;
+
+  border: 1px solid #c5c5c5;
+}
+
+.portfolio-block .wrapper > ul > li.active {
+  color: #dedede;
+
+  border: 1px solid #c5c5c5;
+}
+
+.portfolio-block .wrapper > .portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.portfolio-block .wrapper > .portfolio-list img {
+  margin-bottom: 20px;
+}
+
+.portfolio-block .wrapper > .portfolio-list img:nth-child(n+9) {
+  margin: 0;
 }
 
 /* about us block */
