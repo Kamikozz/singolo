@@ -135,3 +135,63 @@ body {
   line-height: 30px;
   color: #767e9e;
 }
+
+.about-us-block .people-list {
+  display: flex;
+  max-height: 447px;
+  margin-top: 45px;
+
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.about-us-block .people-list > .people-item {
+  width: 300px;
+  height: 447px;
+}
+
+.about-us-block .people-list > .people-item > h3 {
+  margin-top: 16px;
+  margin-bottom: 10px;
+
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #666d89;
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.about-us-block .people-list > .people-item > p {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 21px;
+  color: #767e9e;
+
+  text-align: justify;
+}
+
+.about-us-block .people-item > .people-links-list {
+  display: flex;
+  margin-top: 23px;
+}
+
+.about-us-block .people-item > .people-links-list > li {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  margin-right: 6px;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #666d89;
+  border-radius: 50%;
+}
+
+.about-us-block .people-item > .people-links-list > li:hover {
+  background-color: #dedede;
+
+  cursor: pointer;
+}
