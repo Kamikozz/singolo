@@ -42,7 +42,7 @@ body {
 .portfolio-block .wrapper > h2 {
   margin-bottom: 21px;
 
-  letter-spacing: -0.35px;
+  letter-spacing: -0.1px;
   font-weight: 900;
   font-size: 3rem;
   color: #666d89;
@@ -118,7 +118,7 @@ body {
 .about-us-block .wrapper > h2 {
   margin-bottom: 21px;
 
-  letter-spacing: -0.35px;
+  letter-spacing: -0.1px;
   font-weight: 900;
   font-size: 3rem;
   color: #666d89;
@@ -155,6 +155,7 @@ body {
   margin-top: 16px;
   margin-bottom: 10px;
 
+  letter-spacing: -0.2px;
   font-weight: 900;
   font-size: 1.8rem;
   color: #666d89;
@@ -162,6 +163,11 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.about-us-block .people-list > .people-item > p:first-line {
+  letter-spacing: -0.06px;
+}
+
 
 .about-us-block .people-list > .people-item > p {
   font-weight: 400;
@@ -179,9 +185,10 @@ body {
 
 .about-us-block .people-item > .people-links-list > li {
   display: flex;
-  width: 32px;
-  height: 32px;
-  margin-right: 6px;
+  width: 30px;
+  height: 30px;
+  margin-left: 1px;
+  margin-right: 7px;
 
   align-items: center;
   justify-content: center;
