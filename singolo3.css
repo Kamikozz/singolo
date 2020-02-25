@@ -68,3 +68,37 @@ body {
 
   background-color: #2d303a;
 }
+
+.footer .footer-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer .footer-panel > span {
+  font-size: 1.2rem;
+  color: #666d89;
+}
+
+.footer .footer-panel > .footer-socials {
+  display: flex;
+}
+
+.footer .footer-panel > .footer-socials > li {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  margin-right: 6px;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #666d89;
+  border-radius: 50%;
+}
+
+.footer .footer-panel > .footer-socials > li:hover {
+  background-color: #dedede;
+
+  cursor: pointer;
+}
