@@ -17,6 +17,8 @@ li {
 /* main */
 
 body {
+  min-width: 1020px;
+
   font-family: "Lato", sans-serif;
   font-weight: 400;
 }
