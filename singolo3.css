@@ -42,8 +42,8 @@ body {
 /* get quote block */
 
 .quote-block {
-  padding-top: 66px;
-  padding-bottom: 67px;
+  padding-top: 62px;
+  padding-bottom: 21px;
 
   background-color: #f06c64;
   border-bottom: 6px solid #ea676b;
@@ -52,7 +52,7 @@ body {
 .quote-block .wrapper > h2 {
   margin-bottom: 21px;
 
-  letter-spacing: -0.35px;
+  letter-spacing: -0.2px;
   font-weight: 900;
   font-size: 3rem;
   color: #f0d8d9;
