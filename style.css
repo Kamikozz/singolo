@@ -304,6 +304,8 @@ body {
   border: 1px solid #c5c5c5;
 
   cursor: pointer;
+
+  transition: color .25s ease-in, border .25s ease-in;
 }
 
 .portfolio-block .wrapper > ul > li.active {
@@ -425,6 +427,8 @@ body {
   background-color: #dedede;
 
   cursor: pointer;
+
+  transition: background-color .25s ease-in;
 }
 
 /* singolo3 */
@@ -536,6 +540,7 @@ body {
 .quote-container .quote-form > fieldset > textarea:hover,
 .quote-container .quote-form > button:hover {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  transition: box-shadow .25s ease-in;
 }
 
 .quote-container .quote-form > button:hover {
@@ -667,4 +672,6 @@ body {
   background-color: #dedede;
 
   cursor: pointer;
+
+  transition: background-color .25s ease-in;
 }

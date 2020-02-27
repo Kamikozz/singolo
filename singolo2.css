@@ -82,6 +82,8 @@ body {
   border: 1px solid #c5c5c5;
 
   cursor: pointer;
+
+  transition: color .25s ease-in, border .25s ease-in;
 }
 
 .portfolio-block .wrapper > ul > li.active {
@@ -203,4 +205,6 @@ body {
   background-color: #dedede;
 
   cursor: pointer;
+
+  transition: background-color .25s ease-in;
 }
