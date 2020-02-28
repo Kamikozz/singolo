@@ -43,6 +43,24 @@ body {
   box-sizing: border-box;
 }
 
+.wrapper > h2 {
+  margin-bottom: 21px;
+
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+.wrapper h3 {
+  font-weight: 900;
+  font-size: 1.8rem;
+}
+
+.wrapper > p {
+  font-weight: 300;
+  font-size: 1.8rem;
+  line-height: 30px;
+}
+
 /* singolo1 */
 /* header */
 
@@ -182,11 +200,7 @@ body {
 }
 
 .our-services-block .wrapper > h2 {
-  margin-bottom: 21px;
-
   letter-spacing: -0.35px;
-  font-weight: 900;
-  font-size: 3rem;
   color: #666d89;
 }
 
@@ -195,10 +209,6 @@ body {
 }
 
 .our-services-block .wrapper > p {
-  letter-spacing: 0px;
-  font-weight: 300;
-  font-size: 1.8rem;
-  line-height: 30px;
   color: #767e9e;
 }
 
@@ -234,15 +244,13 @@ body {
   margin-bottom: 32px;
 }
 
-.our-services-block .wrapper > div > div > h3 {
+.our-services-block .services-list .services-item > h3 {
   margin-bottom: 9px;
 
-  font-weight: 900;
-  font-size: 1.8rem;
   color: #666d89;
 }
 
-.our-services-block .wrapper > div > div > p {
+.our-services-block .services-list .services-item > p {
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 21px;
@@ -264,20 +272,13 @@ body {
 }
 
 .portfolio-block .wrapper > h2 {
-  margin-bottom: 21px;
-
   letter-spacing: -0.1px;
-  font-weight: 900;
-  font-size: 3rem;
   color: #666d89;
 }
 
 .portfolio-block .wrapper > p {
   margin-bottom: 10px;
 
-  font-weight: 300;
-  font-size: 1.8rem;
-  line-height: 30px;
   color: #767e9e;
 }
 
@@ -342,11 +343,7 @@ body {
 }
 
 .about-us-block .wrapper > h2 {
-  margin-bottom: 21px;
-
   letter-spacing: -0.1px;
-  font-weight: 900;
-  font-size: 3rem;
   color: #666d89;
 }
 
@@ -355,10 +352,6 @@ body {
 }
 
 .about-us-block  .wrapper > p {
-  letter-spacing: 0px;
-  font-weight: 300;
-  font-size: 1.8rem;
-  line-height: 30px;
   color: #767e9e;
 }
 
@@ -382,8 +375,6 @@ body {
   margin-bottom: 10px;
 
   letter-spacing: -0.2px;
-  font-weight: 900;
-  font-size: 1.8rem;
   color: #666d89;
 
   white-space: nowrap;
@@ -393,7 +384,6 @@ body {
 .about-us-block .people-list > .people-item > p:first-line {
   letter-spacing: -0.06px;
 }
-
 
 .about-us-block .people-list > .people-item > p {
   font-weight: 400;
@@ -443,11 +433,7 @@ body {
 }
 
 .quote-block .wrapper > h2 {
-  margin-bottom: 21px;
-
   letter-spacing: -0.2px;
-  font-weight: 900;
-  font-size: 3rem;
   color: #f0d8d9;
 }
 
@@ -456,10 +442,6 @@ body {
 }
 
 .quote-block  .wrapper > p {
-  letter-spacing: 0px;
-  font-weight: 300;
-  font-size: 1.8rem;
-  line-height: 30px;
   color: #f0d8d9;
 }
 
@@ -557,8 +539,6 @@ body {
   margin-bottom: 10px;
 
   letter-spacing: -0.1px;
-  font-weight: 900;
-  font-size: 1.8rem;
   color: #f0d8d9;
 }
 
