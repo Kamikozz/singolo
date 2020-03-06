@@ -205,12 +205,9 @@ body {
   color: #666d89;
 }
 
-.our-services-block .wrapper > p::first-line {
-  letter-spacing: 0.15px;
-}
-
 .our-services-block .wrapper > p {
   color: #767e9e;
+  text-align: justify;
 }
 
 .icon-outer {
@@ -282,6 +279,7 @@ body {
 .portfolio-block .wrapper > p {
   margin-bottom: 10px;
 
+  text-align: justify;
   color: #767e9e;
 }
 
@@ -350,12 +348,9 @@ body {
   color: #666d89;
 }
 
-.about-us-block .wrapper > p::first-line {
-  letter-spacing: 0.15px;
-}
-
 .about-us-block  .wrapper > p {
   color: #767e9e;
+  text-align: justify;
 }
 
 .about-us-block .people-list {
@@ -390,7 +385,7 @@ body {
 }
 
 .about-us-block .people-list > .people-item > p:first-line {
-  letter-spacing: -0.06px;
+  letter-spacing: -0.06px; /* это не баг, а фича */
 }
 
 .about-us-block .people-list > .people-item > p {
@@ -445,12 +440,9 @@ body {
   color: #f0d8d9;
 }
 
-.quote-block .wrapper > p::first-line {
-  letter-spacing: 0.15px;
-}
-
 .quote-block  .wrapper > p {
   color: #f0d8d9;
+  text-align: justify;
 }
 
 .quote-container {
