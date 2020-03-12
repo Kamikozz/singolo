@@ -353,6 +353,12 @@ body {
   margin-bottom: 20px;
 }
 
+.portfolio-block .portfolio-list img.active {
+  outline: #F06C64 solid 5px;
+  transform: scale(0.95);
+  transition: transform 0.25s ease-out, outline 0.5s ease-in;
+}
+
 .portfolio-block .portfolio-list img:nth-child(n+9) {
   margin: 0;
 }

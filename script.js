@@ -51,6 +51,21 @@ function changeSliderColor(direction, slidesList) {
   outerSliderSection.classList.replace(previousClassName, newClassName);
 }
 
+/**
+ * Shuffles the given array
+ * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Fisher_and_Yates'_original_method
+ * @param {Array|HTMLCollection} arr source array which must be shuffled
+ * @returns {Array|HTMLCollection} shuffled array of elements
+ */
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    let randomIdx = Math.random() * (i + 1) | 0;
+    [arr[i], arr[randomIdx]] = [arr[randomIdx], arr[i]]; // swap elements
+  }
+  return arr;
+}
+
 window.onload = () => {
   console.log('Window loaded');
 
@@ -146,5 +161,58 @@ window.onload = () => {
 
   rightArrow.addEventListener('click', (e) => {
     changeSliderColor('right', SLIDES);
+  });
+
+  // --------------------- Portfolio section --------------------- //
+  const portfolioList = document.getElementsByClassName('portfolio-list');
+  // get parent of portfolio-list
+  const parent = portfolioList[0].parentElement; // wrapper
+
+  // tab handling
+  const portfolioTabs = portfolioList[0].previousElementSibling;
+  // set default active class
+  let lastPortfolioActiveTab = portfolioTabs.firstElementChild;
+  portfolioTabs.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'LI') return;
+    if (lastPortfolioActiveTab === e.target) return;
+
+    const ACTIVE_NAME = 'active';
+    lastPortfolioActiveTab.classList.remove(ACTIVE_NAME);
+    lastPortfolioActiveTab = e.target;
+    lastPortfolioActiveTab.classList.add(ACTIVE_NAME);
+
+    // get children of portfolioList & shuffle them
+    const arr = shuffle(portfolioList[0].childNodes);
+
+    // get new portfolioList with parent = 'portfolio-list'
+    const newPortfolioList = arr[0].parentElement;
+
+    // delete from DOM the old portfolio-list
+    portfolioList[0].remove();
+
+    // remove all of the children from new portfolioList
+    // (from old porfolio-list)
+    for (let i = 0; i < arr.length; i++) {
+      newPortfolioList.childNodes[0].remove();
+    }
+
+    newPortfolioList.append(...arr); // add shuffled items into new portfolio
+    parent.append(newPortfolioList); // render DOM with ready new portfolio
+  });
+
+  // images handling
+  let lastPortfolioActiveImg = '';
+  portfolioList[0].addEventListener('click', (e) => {
+    console.log(e.target);
+    if (e.target.tagName !== 'IMG') return;
+    if (lastPortfolioActiveImg === e.target) return;
+    if (typeof lastPortfolioActiveImg === 'string') {
+      lastPortfolioActiveImg = e.target;
+    }
+
+    const ACTIVE_NAME = 'active';
+    lastPortfolioActiveImg.classList.remove(ACTIVE_NAME);
+    lastPortfolioActiveImg = e.target;
+    lastPortfolioActiveImg.classList.add(ACTIVE_NAME);
   });
 };
