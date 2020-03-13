@@ -1,4 +1,3 @@
-
 /**
  * Returns name of the found className or undefined
  * @param {DOMTokenList} list array of classes in which to find
@@ -65,6 +64,20 @@ function shuffle(array) {
   }
   return arr;
 }
+
+/**
+ * Deletes active className and sets to new activated tab
+ * @param {HTMLElement} previousTab last tab
+ * @param {HTMLElement} nextTab event.target or other new activated tab
+ */
+function toggleActiveTab(previousTab, nextTab) {
+  previousTab.classList.remove(ACTIVE_NAME);
+  nextTab.classList.add(ACTIVE_NAME);
+}
+
+// Constants, Variables & Event registration
+// ------------------------- Common ------------------------- //
+const ACTIVE_NAME = 'active';
 
 window.onload = () => {
   console.log('Window loaded');
@@ -164,31 +177,30 @@ window.onload = () => {
   });
 
   // --------------------- Portfolio section --------------------- //
-  const portfolioList = document.getElementsByClassName('portfolio-list');
+  const portfolioList = document.getElementsByClassName('portfolio-list')[0];
   // get parent of portfolio-list
-  const parent = portfolioList[0].parentElement; // wrapper
+  const parent = portfolioList.parentElement; // wrapper
 
   // tab handling
-  const portfolioTabs = portfolioList[0].previousElementSibling;
+  const portfolioTabs = portfolioList.previousElementSibling;
   // set default active class
   let lastPortfolioActiveTab = portfolioTabs.firstElementChild;
   portfolioTabs.addEventListener('click', (e) => {
     if (e.target.tagName !== 'LI') return;
     if (lastPortfolioActiveTab === e.target) return;
 
-    const ACTIVE_NAME = 'active';
-    lastPortfolioActiveTab.classList.remove(ACTIVE_NAME);
+    toggleActiveTab(lastPortfolioActiveTab, e.target);
+
     lastPortfolioActiveTab = e.target;
-    lastPortfolioActiveTab.classList.add(ACTIVE_NAME);
 
     // get children of portfolioList & shuffle them
-    const arr = shuffle(portfolioList[0].childNodes);
+    const arr = shuffle(portfolioList.childNodes);
 
     // get new portfolioList with parent = 'portfolio-list'
     const newPortfolioList = arr[0].parentElement;
 
     // delete from DOM the old portfolio-list
-    portfolioList[0].remove();
+    portfolioList.remove();
 
     // remove all of the children from new portfolioList
     // (from old porfolio-list)
@@ -202,17 +214,15 @@ window.onload = () => {
 
   // images handling
   let lastPortfolioActiveImg = '';
-  portfolioList[0].addEventListener('click', (e) => {
-    console.log(e.target);
+  portfolioList.addEventListener('click', (e) => {
     if (e.target.tagName !== 'IMG') return;
     if (lastPortfolioActiveImg === e.target) return;
     if (typeof lastPortfolioActiveImg === 'string') {
       lastPortfolioActiveImg = e.target;
     }
 
-    const ACTIVE_NAME = 'active';
-    lastPortfolioActiveImg.classList.remove(ACTIVE_NAME);
+    toggleActiveTab(lastPortfolioActiveImg, e.target);
+
     lastPortfolioActiveImg = e.target;
-    lastPortfolioActiveImg.classList.add(ACTIVE_NAME);
   });
 };
