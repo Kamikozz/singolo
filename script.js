@@ -82,6 +82,21 @@ const ACTIVE_NAME = 'active';
 window.onload = () => {
   console.log('Window loaded');
 
+  // --------------------- Header section --------------------- //
+  // menu handling
+  const headerMenu = document.querySelector('.header nav ul');
+  // set default active class to ul > li > a:first-child
+  let lastHeaderMenuActiveTab = headerMenu.firstElementChild.firstElementChild;
+  headerMenu.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'A') return;
+    if (lastHeaderMenuActiveTab === e.target) return;
+
+    toggleActiveTab(lastHeaderMenuActiveTab, e.target);
+
+    lastHeaderMenuActiveTab = e.target;
+  });
+
+  // --------------------- Slider section --------------------- //
   const carouselInner = document.querySelector('div.carousel-inner');
   const leftArrow = carouselInner.firstElementChild;
   const rightArrow = carouselInner.lastElementChild
