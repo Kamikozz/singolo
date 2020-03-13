@@ -289,7 +289,7 @@ body {
 
 .portfolio-block {
   padding-top: 63px;
-  padding-bottom: 67px;
+  padding-bottom: 58px;
 
   background-color: #2d303a;
   border-bottom: 6px solid #323746;
@@ -342,11 +342,10 @@ body {
 
 .portfolio-block .portfolio-list {
   display: flex;
-  max-height: 601px;
+  max-height: 610px;
 
   flex-wrap: wrap;
   justify-content: space-between;
-  overflow: hidden;
 }
 
 .portfolio-block .portfolio-list img {
@@ -355,13 +354,14 @@ body {
 
 .portfolio-block .portfolio-list img.active {
   outline: #F06C64 solid 5px;
-  transform: scale(0.95);
-  transition: transform 0.25s ease-out, outline 0.5s ease-in;
+  transform: scale(calc(220 / (220 - 5 * 2)));
+  transition: transform 0.25s ease, outline 0.3s ease;
 }
 
-.portfolio-block .portfolio-list img:nth-child(n+9) {
+/* .portfolio-block .portfolio-list img:nth-child(n+9) {
+  display: none;
   margin: 0;
-}
+} */
 
 /* about us block */
 
