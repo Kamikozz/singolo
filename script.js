@@ -75,169 +75,175 @@ function toggleActiveTab(previousTab, nextTab) {
   nextTab.classList.add(ACTIVE_NAME);
 }
 
+// Event handlers
+// --------------------- Header section --------------------- //
+function handlerHeaderMenu(e) {
+  if (e.target.tagName !== 'A') return;
+  if (lastHeaderMenuActiveTab === e.target) return;
+
+  toggleActiveTab(lastHeaderMenuActiveTab, e.target);
+
+  lastHeaderMenuActiveTab = e.target;
+}
+
+// --------------------- Slider section --------------------- //
+function handlerLeftSlide(e) {
+  changeSliderColor('left', SLIDES);
+
+  // console.log(e);
+  const slide1 = document.querySelector('div.slides.slide-1');
+  const slide2 = slide1.nextElementSibling;
+
+  if (currentView.classList.value.indexOf('slide-1') !== -1) {
+    console.log('Slide-1!');
+
+    currentView.classList.remove(currentClass.slide1);
+    if (currentClass.slide1 !== ANIMATION3) {
+      currentView.classList.add(ANIMATION3);
+    } else {
+      currentView.classList.add(ANIMATION4);
+    }
+    currentView.classList.add('hidden');
+    currentClass.slide1 = ANIMATION3;
+
+    currentView = slide2;
+
+    currentView.classList.remove(currentClass.slide2);
+    currentView.classList.remove('hidden');
+    if (currentClass.slide2 !== ANIMATION3) {
+      currentView.classList.add(ANIMATION3);
+    } else {
+      currentView.classList.add(ANIMATION4);
+    }
+    currentClass.slide2 = ANIMATION4;
+
+    console.log('End of Slide1:', slide1.classList, slide2.classList);
+  } else {
+    console.log('Slide-2!');
+
+    // console.log('Current classList Slide-2:', currentView.classList);
+    currentView.classList.remove(currentClass.slide2);
+    // console.log('Current classList Slide-2:', currentView.classList);
+    if (currentClass.slide1 !== ANIMATION3) {
+      currentView.classList.add(ANIMATION3);
+    } else {
+      currentView.classList.add(ANIMATION4);
+    }
+    currentView.classList.add('hidden');
+    currentClass.slide2 = ANIMATION4;
+
+    currentView = slide1;
+
+    currentView.classList.remove(currentClass.slide1);
+    currentView.classList.remove('hidden');
+    if (currentClass.slide2 !== ANIMATION3) {
+      currentView.classList.add(ANIMATION3);
+    } else {
+      currentView.classList.add(ANIMATION4);
+    }
+    currentClass.slide1 = ANIMATION3;
+    // console.log('End of Slide2:', slide1.classList, slide2.classList);
+  }
+  // currentView.classList.add()
+  // if (currentView.)
+}
+
+function handlerRightSlide(e) {
+  changeSliderColor('right', SLIDES);
+}
+
+// --------------------- Portfolio section --------------------- //
+function handlerPortfolioTabs(e) {
+  if (e.target.tagName !== 'LI') return;
+  if (lastPortfolioActiveTab === e.target) return;
+
+  toggleActiveTab(lastPortfolioActiveTab, e.target);
+
+  lastPortfolioActiveTab = e.target;
+
+  // get children of portfolioList & shuffle them
+  const arr = shuffle(portfolioList.childNodes);
+
+  // get new portfolioList with parent = 'portfolio-list'
+  const newPortfolioList = arr[0].parentElement;
+
+  // delete from DOM the old portfolio-list
+  portfolioList.remove();
+
+  // remove all of the children from new portfolioList
+  // (from old porfolio-list)
+  for (let i = 0; i < arr.length; i++) {
+    newPortfolioList.childNodes[0].remove();
+  }
+
+  newPortfolioList.append(...arr); // add shuffled items into new portfolio
+  parent.append(newPortfolioList); // render DOM with ready new portfolio
+}
+
+function handlerPortfolioImages(e) {
+  if (e.target.tagName !== 'IMG') return;
+  if (lastPortfolioActiveImg === e.target) return;
+  if (typeof lastPortfolioActiveImg === 'string') {
+    lastPortfolioActiveImg = e.target;
+  }
+
+  toggleActiveTab(lastPortfolioActiveImg, e.target);
+
+  lastPortfolioActiveImg = e.target;
+}
+
 // Constants, Variables & Event registration
 // ------------------------- Common ------------------------- //
 const ACTIVE_NAME = 'active';
 
-window.onload = () => {
-  console.log('Window loaded');
+// --------------------- Header section --------------------- //
+// menu handling
+const headerMenu = document.querySelector('.header nav ul');
+// set default active class to ul > li > a:first-child
+let lastHeaderMenuActiveTab = headerMenu.firstElementChild.firstElementChild;
+headerMenu.addEventListener('click', handlerHeaderMenu);
 
-  // --------------------- Header section --------------------- //
-  // menu handling
-  const headerMenu = document.querySelector('.header nav ul');
-  // set default active class to ul > li > a:first-child
-  let lastHeaderMenuActiveTab = headerMenu.firstElementChild.firstElementChild;
-  headerMenu.addEventListener('click', (e) => {
-    if (e.target.tagName !== 'A') return;
-    if (lastHeaderMenuActiveTab === e.target) return;
+// --------------------- Slider section --------------------- //
+const carousel = document.getElementsByClassName('carousel');
+const carouselInner = document.querySelector('div.carousel-inner');
+const leftArrow = carouselInner.firstElementChild;
+const rightArrow = carouselInner.lastElementChild;
+// console.log(leftArrow);
+// console.log(rightArrow);
 
-    toggleActiveTab(lastHeaderMenuActiveTab, e.target);
+let currentView = document.querySelector('div.slides.slide-1');
 
-    lastHeaderMenuActiveTab = e.target;
-  });
+const ANIMATION1 = 'animation1';
+const ANIMATION2 = 'animation2';
+const ANIMATION3 = 'animation3';
+const ANIMATION4 = 'animation4';
 
-  // --------------------- Slider section --------------------- //
-  const carouselInner = document.querySelector('div.carousel-inner');
-  const leftArrow = carouselInner.firstElementChild;
-  const rightArrow = carouselInner.lastElementChild
+let currentClass = {
+  slide1: 'animation',
+  slide2: 'animation'
+}
 
-  // console.log(leftArrow);
-  // console.log(rightArrow);
+const SLIDE = 'slide';
+const SLIDES = ['slide-1', 'slide-2'];
+// const SLIDES_LIST = {
+//   'slide-1': 'slide-1',
+//   'slide-2': 'slide-2'
+// }
 
-  let currentView = document.querySelector('div.slides.slide-1');
+leftArrow.addEventListener('click', handlerLeftSlide);
+rightArrow.addEventListener('click', handlerRightSlide);
 
-  const ANIMATION1 = 'animation1';
-  const ANIMATION2 = 'animation2';
-  const ANIMATION3 = 'animation3';
-  const ANIMATION4 = 'animation4';
+// --------------------- Portfolio section --------------------- //
+const portfolioList = document.getElementsByClassName('portfolio-list')[0];
+// get parent of portfolio-list
+const parent = portfolioList.parentElement; // wrapper
 
-  let currentClass = {
-    slide1: 'animation',
-    slide2: 'animation'
-  }
+// tab handling
+const portfolioTabs = portfolioList.previousElementSibling;
+// set default active class
+let lastPortfolioActiveTab = portfolioTabs.firstElementChild;
+portfolioTabs.addEventListener('click', handlerPortfolioTabs);
 
-  const SLIDE = 'slide';
-  const SLIDES = ['slide-1', 'slide-2'];
-  // const SLIDES_LIST = {
-  //   'slide-1': 'slide-1',
-  //   'slide-2': 'slide-2'
-  // }
-
-  leftArrow.addEventListener('click', (e) => {
-    changeSliderColor('left', SLIDES);
-
-    // console.log(e);
-    const slide1 = document.querySelector('div.slides.slide-1');
-    const slide2 = slide1.nextElementSibling;
-
-    if (currentView.classList.value.indexOf('slide-1') !== -1) {
-      console.log('Slide-1!');
-
-      currentView.classList.remove(currentClass.slide1);
-      if (currentClass.slide1 !== ANIMATION3) {
-        currentView.classList.add(ANIMATION3);
-      } else {
-        currentView.classList.add(ANIMATION4);
-      }
-      currentView.classList.add('hidden');
-      currentClass.slide1 = ANIMATION3;
-
-      currentView = slide2;
-
-      currentView.classList.remove(currentClass.slide2);
-      currentView.classList.remove('hidden');
-      if (currentClass.slide2 !== ANIMATION3) {
-        currentView.classList.add(ANIMATION3);
-      } else {
-        currentView.classList.add(ANIMATION4);
-      }
-      currentClass.slide2 = ANIMATION4;
-
-      console.log('End of Slide1:', slide1.classList, slide2.classList);
-    } else {
-      console.log('Slide-2!');
-
-
-
-      // console.log('Current classList Slide-2:', currentView.classList);
-      currentView.classList.remove(currentClass.slide2);
-      // console.log('Current classList Slide-2:', currentView.classList);
-      if (currentClass.slide1 !== ANIMATION3) {
-        currentView.classList.add(ANIMATION3);
-      } else {
-        currentView.classList.add(ANIMATION4);
-      }
-      currentView.classList.add('hidden');
-      currentClass.slide2 = ANIMATION4;
-
-      currentView = slide1;
-
-      currentView.classList.remove(currentClass.slide1);
-      currentView.classList.remove('hidden');
-      if (currentClass.slide2 !== ANIMATION3) {
-        currentView.classList.add(ANIMATION3);
-      } else {
-        currentView.classList.add(ANIMATION4);
-      }
-      currentClass.slide1 = ANIMATION3;
-      // console.log('End of Slide2:', slide1.classList, slide2.classList);
-
-    }
-    // currentView.classList.add()
-    // if (currentView.)
-  });
-
-  rightArrow.addEventListener('click', (e) => {
-    changeSliderColor('right', SLIDES);
-  });
-
-  // --------------------- Portfolio section --------------------- //
-  const portfolioList = document.getElementsByClassName('portfolio-list')[0];
-  // get parent of portfolio-list
-  const parent = portfolioList.parentElement; // wrapper
-
-  // tab handling
-  const portfolioTabs = portfolioList.previousElementSibling;
-  // set default active class
-  let lastPortfolioActiveTab = portfolioTabs.firstElementChild;
-  portfolioTabs.addEventListener('click', (e) => {
-    if (e.target.tagName !== 'LI') return;
-    if (lastPortfolioActiveTab === e.target) return;
-
-    toggleActiveTab(lastPortfolioActiveTab, e.target);
-
-    lastPortfolioActiveTab = e.target;
-
-    // get children of portfolioList & shuffle them
-    const arr = shuffle(portfolioList.childNodes);
-
-    // get new portfolioList with parent = 'portfolio-list'
-    const newPortfolioList = arr[0].parentElement;
-
-    // delete from DOM the old portfolio-list
-    portfolioList.remove();
-
-    // remove all of the children from new portfolioList
-    // (from old porfolio-list)
-    for (let i = 0; i < arr.length; i++) {
-      newPortfolioList.childNodes[0].remove();
-    }
-
-    newPortfolioList.append(...arr); // add shuffled items into new portfolio
-    parent.append(newPortfolioList); // render DOM with ready new portfolio
-  });
-
-  // images handling
-  let lastPortfolioActiveImg = '';
-  portfolioList.addEventListener('click', (e) => {
-    if (e.target.tagName !== 'IMG') return;
-    if (lastPortfolioActiveImg === e.target) return;
-    if (typeof lastPortfolioActiveImg === 'string') {
-      lastPortfolioActiveImg = e.target;
-    }
-
-    toggleActiveTab(lastPortfolioActiveImg, e.target);
-
-    lastPortfolioActiveImg = e.target;
-  });
-};
+// images handling
+let lastPortfolioActiveImg = '';
+portfolioList.addEventListener('click', handlerPortfolioImages);
