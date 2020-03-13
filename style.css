@@ -323,6 +323,8 @@ body {
 
   border: 1px solid #666d89;
   border-radius: 5px;
+
+  user-select: none;
 }
 
 .portfolio-block .wrapper > ul > li:hover {
