@@ -51,18 +51,47 @@ function changeSliderColor(direction, slidesList) {
 }
 
 /**
- * Shuffles the given array
+ * Shuffles the given array by Fisher and Yates method
  * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Fisher_and_Yates'_original_method
  * @param {Array|HTMLCollection} arr source array which must be shuffled
  * @returns {Array|HTMLCollection} shuffled array of elements
  */
-function shuffle(array) {
+function shuffleFisherYates(array) {
   const arr = [...array];
   for (let i = arr.length - 1; i > 0; i--) {
     let randomIdx = Math.random() * (i + 1) | 0;
     [arr[i], arr[randomIdx]] = [arr[randomIdx], arr[i]]; // swap elements
   }
   return arr;
+}
+
+/**
+ * Shuffles the given array by Fisher and Yates method
+ * and guarantees that numbers from shuffled array are not equal to
+ * the items from source array
+ * @param {Array|HTMLCollection} arr source array which must be shuffled
+ * @returns {Array|HTMLCollection} shuffled array of elements
+ */
+function shuffle(array) {
+  const arr = [...array];
+
+  // Fisher and Yates method
+  const shuffledArr =  shuffleFisherYates(arr);
+
+  for (let i = 0; i < shuffledArr.length; i++) {
+    if (shuffledArr[i] === arr[i]) {
+      if (i + 1 === shuffledArr.length) {
+        // reach the end? -> swap first & last element
+        [shuffledArr[i], shuffledArr[0]] = [shuffledArr[0], shuffledArr[i]];
+      } else {
+        // default action -> swap this & last element
+        [shuffledArr[i], shuffledArr[shuffledArr.length - 1]] =
+          [shuffledArr[shuffledArr.length - 1], shuffledArr[i]];
+      }
+    }
+  }
+
+  return shuffledArr;
 }
 
 /**
@@ -162,7 +191,8 @@ function handlerPortfolioTabs(e) {
   lastPortfolioActiveTab = e.target;
 
   // get children of portfolioList & shuffle them
-  const arr = shuffle(portfolioList.childNodes);
+  const arr = shuffle(portfolioList.children);
+
 
   // get new portfolioList with parent = 'portfolio-list'
   const newPortfolioList = arr[0].parentElement;
