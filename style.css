@@ -10,16 +10,11 @@ li {
   list-style: none;
 }
 
-img:focus {
-  outline: none;
-}
-
 fieldset,
 input,
 textarea,
 button {
   border: none;
-  outline: none;
 }
 
 /* main */
@@ -372,6 +367,8 @@ body {
 
 .portfolio-block .portfolio-list img {
   margin-bottom: 20px;
+
+  cursor: pointer;
 }
 
 .portfolio-block .portfolio-list img.active {
