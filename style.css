@@ -511,6 +511,41 @@ body {
   margin-right: 21px;
 }
 
+.quote-container .quote-form > fieldset {
+  margin-bottom: 16px;
+}
+
+.quote-container .quote-form > fieldset > input,
+.quote-container .quote-form > fieldset > textarea {
+  padding: 8px 15px;
+
+  font-size: 1.2rem;
+  font-family: inherit;
+  color: #f0d8d9;
+  caret-color: #f0d8d9;
+
+  background-color: #d6564f;
+  border-radius: 5px;
+}
+
+.quote-container .quote-form > fieldset > input {
+  width: 589px;
+  margin-bottom: 16px;
+
+  line-height: 22px;
+}
+
+.quote-container .quote-form > fieldset > textarea {
+  display: block; /* fix bottom padding */
+  min-width: 589px;
+  max-width: 589px;
+  min-height: 186px;
+
+  line-height: 19px; /* fit Pixel Perfect */
+
+  resize: none;
+}
+
 .quote-container .quote-form > fieldset > input::-webkit-input-placeholder,
 .quote-container .quote-form > fieldset > textarea::-webkit-input-placeholder {
   color: #f48c8f;
@@ -524,42 +559,6 @@ body {
 .quote-container .quote-form > fieldset > input:-webkit-autofill {
   box-shadow: inset 0 0 0 50px #d6564f;
   -webkit-text-fill-color: #f0d8d9;
-}
-
-.quote-container .quote-form > fieldset > input {
-  width: 589px;
-  margin-bottom: 16px;
-  padding: 8px 15px;
-
-  line-height: 22px;
-  font-size: 1.2rem;
-  font-family: inherit;
-  color: #f0d8d9;
-
-  background-color: #d6564f;
-  border-radius: 5px;
-}
-
-.quote-container .quote-form > fieldset > textarea {
-  display: block; /* fix bottom padding */
-  min-width: 589px;
-  max-width: 589px;
-  min-height: 186px;
-  padding: 8px 15px;
-
-  line-height: 19px; /* fit Pixel Perfect */
-  font-size: 1.2rem;
-  font-family: inherit;
-  color: #f0d8d9;
-
-  background-color: #d6564f;
-  border-radius: 5px;
-
-  resize: none;
-}
-
-.quote-container .quote-form > fieldset {
-  margin-bottom: 16px;
 }
 
 .quote-container .quote-form > button {
