@@ -105,6 +105,86 @@ function toggleActiveTab(previousTab, nextTab) {
 }
 
 // Event handlers
+// ------------------------- Common ------------------------- //
+function handlerPageScroll(e) {
+  // get the currentLink as id '#name' and delete # -> 'name'
+  const currentLinkName =
+    lastHeaderMenuActiveTab.getAttribute('href').substring(1);
+  const currentLinkYOffset = anchors[currentLinkName].offsetTop;
+
+  const difference = 10; // gap between 2 anchors
+  if (currentLinkYOffset - window.pageYOffset > difference) {
+    // get previous tab
+    const prevLink = lastHeaderMenuActiveTab
+                      .parentElement
+                      .previousElementSibling
+                      .firstElementChild;
+
+    // switch to previous tab
+    toggleActiveTab(lastHeaderMenuActiveTab, prevLink);
+    lastHeaderMenuActiveTab = prevLink;
+    return;
+  }
+
+  // get next tab
+  const nextLink = lastHeaderMenuActiveTab
+                    .parentElement
+                    .nextElementSibling
+                    .firstElementChild;
+  const nextLinkName = nextLink.getAttribute('href').substring(1);
+  const nextLinkYOffset = anchors[nextLinkName].offsetTop;
+  if (nextLinkYOffset - window.pageYOffset < difference) {
+    // switch to next tab
+    toggleActiveTab(lastHeaderMenuActiveTab, nextLink);
+    lastHeaderMenuActiveTab = nextLink;
+  }
+
+   if (isReachEnd()) {
+    // console.log('event', isScrollEvent);
+    if (isScrollEvent) {
+      let nextElement = lastHeaderMenuActiveTab.parentElement.nextElementSibling;
+      let i = 1;
+      while (nextElement !== null) {
+        setTimeout((next) => {
+          toggleActiveTab(lastHeaderMenuActiveTab, next);
+          lastHeaderMenuActiveTab = next;
+        }, 100 * i, nextElement.firstElementChild);
+        i++;
+        nextElement = nextElement.nextElementSibling;
+      }
+    } else {
+      // TODO: пофиксить баг, когда мы кликаем по табам включается "false"
+      // и дойдя до конца не ставится нужный таб, не доводится, и если масштаб иной
+      // console.log(lastHeaderMenuActiveTab);
+
+      let nextElement = lastHeaderMenuActiveTab.parentElement.nextElementSibling;
+      let i = 1;
+      while (nextElement !== null) {
+        setTimeout((next) => {
+          toggleActiveTab(lastHeaderMenuActiveTab, next);
+          lastHeaderMenuActiveTab = next;
+        }, 100 * i, nextElement.firstElementChild);
+        i++;
+        nextElement = nextElement.nextElementSibling;
+      }
+      // scroll from lastHeaderMenuActiveTab
+
+      // TODO: fix smooth animation
+      // setTimeout((next) => {
+      //   toggleActiveTab(lastHeaderMenuActiveTab, next);
+      //   lastHeaderMenuActiveTab = next;
+      // }, 2000, lastHeaderMenuClickedTab);
+      isScrollEvent = true;
+    }
+  }
+
+  function isReachEnd() {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    return window.scrollY + 1 >= scrollHeight - clientHeight;
+  }
+}
+
 // --------------------- Header section --------------------- //
 function handlerHeaderMenu(e) {
   if (e.target.tagName !== 'A') return;
@@ -113,6 +193,8 @@ function handlerHeaderMenu(e) {
   toggleActiveTab(lastHeaderMenuActiveTab, e.target);
 
   lastHeaderMenuActiveTab = e.target;
+  lastHeaderMenuClickedTab = lastHeaderMenuActiveTab;
+  isScrollEvent = false;
 }
 
 // --------------------- Slider section --------------------- //
@@ -226,11 +308,16 @@ function handlerPortfolioImages(e) {
 // ------------------------- Common ------------------------- //
 const ACTIVE_NAME = 'active';
 
+const anchors = document.getElementsByClassName('anchor-link');
+window.addEventListener('scroll', handlerPageScroll);
+
 // --------------------- Header section --------------------- //
 // menu handling
 const headerMenu = document.querySelector('.header nav ul');
 // set default active class to ul > li > a:first-child
 let lastHeaderMenuActiveTab = headerMenu.firstElementChild.firstElementChild;
+let lastHeaderMenuClickedTab = lastHeaderMenuActiveTab;
+let isScrollEvent = true;
 headerMenu.addEventListener('click', handlerHeaderMenu);
 
 // --------------------- Slider section --------------------- //

@@ -139,13 +139,13 @@ body {
 .header nav li a.active {
   color: #f06c64;
 
-  transition: color .25s ease-in;
+  transition: color 0.4s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .header nav li a:hover {
   color: #f06c64;
 
-  transition: color .25s ease-in;
+  transition: color 0.4s cubic-bezier(0, 0, 0.2, 1);
 
   cursor: pointer;
 }
