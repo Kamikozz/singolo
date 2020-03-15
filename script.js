@@ -200,67 +200,159 @@ function handlerHeaderMenu(e) {
 // --------------------- Slider section --------------------- //
 function handlerLeftSlide(e) {
   changeSliderColor('left', SLIDES);
-
-  // console.log(e);
-  const slide1 = document.querySelector('div.slides.slide-1');
-  const slide2 = slide1.nextElementSibling;
+  if (firstRun) {
+    firstRun = !firstRun;
+    slide2.classList.toggle(HIDDEN);
+  }
 
   if (currentView.classList.value.indexOf('slide-1') !== -1) {
-    console.log('Slide-1!');
+    console.log('It was Slide-1!');
 
+    console.log('Current', currentView);
+    console.log('slide1: CurrentClass BEFORE', currentClass);
     currentView.classList.remove(currentClass.slide1);
     if (currentClass.slide1 !== ANIMATION3) {
-      currentView.classList.add(ANIMATION3);
+      currentClass.slide1 = ANIMATION3;
     } else {
-      currentView.classList.add(ANIMATION4);
+      currentClass.slide1 = ANIMATION4;
     }
-    currentView.classList.add('hidden');
-    currentClass.slide1 = ANIMATION3;
+    currentView.classList.add(currentClass.slide1);
 
-    currentView = slide2;
+    console.log('slide1: CurrentClass AFTER', currentClass);
 
+    currentView = slide2; // change slide1 -> slide2
+
+    console.log('slide2: CurrentClass BEFORE', currentClass);
     currentView.classList.remove(currentClass.slide2);
-    currentView.classList.remove('hidden');
-    if (currentClass.slide2 !== ANIMATION3) {
-      currentView.classList.add(ANIMATION3);
+    if (currentClass.slide2 !== ANIMATION4) {
+      currentClass.slide2 = ANIMATION4;
     } else {
-      currentView.classList.add(ANIMATION4);
+      currentClass.slide2 = ANIMATION3;
     }
-    currentClass.slide2 = ANIMATION4;
+    currentView.classList.add(currentClass.slide2);
 
-    console.log('End of Slide1:', slide1.classList, slide2.classList);
+    console.log('slide2: CurrentClass AFTER', currentClass);
+
+    console.log('Now it is Slide-2!');
+    // console.log('End of Slide1:', slide1.classList, slide2.classList);
   } else {
-    console.log('Slide-2!');
+    console.log('It was Slide-2!');
 
-    // console.log('Current classList Slide-2:', currentView.classList);
+    console.log('slide2: CurrentClass BEFORE', currentClass);
     currentView.classList.remove(currentClass.slide2);
-    // console.log('Current classList Slide-2:', currentView.classList);
-    if (currentClass.slide1 !== ANIMATION3) {
-      currentView.classList.add(ANIMATION3);
+    if (currentClass.slide1 === ANIMATION3 ||
+      currentClass.slide1 === ANIMATION4) {
+      if (currentClass.slide2 !== ANIMATION4) {
+        currentClass.slide2 = ANIMATION4;
+      } else {
+        currentClass.slide2 = ANIMATION3;
+      }
     } else {
-      currentView.classList.add(ANIMATION4);
+      currentClass.slide2 = ANIMATION3;
     }
-    currentView.classList.add('hidden');
-    currentClass.slide2 = ANIMATION4;
+    currentView.classList.add(currentClass.slide2);
 
-    currentView = slide1;
+    console.log('slide2: CurrentClass AFTER', currentClass);
 
+    currentView = slide1; // change slide2 -> slide1
+
+    console.log('slide1: CurrentClass BEFORE', currentClass);
     currentView.classList.remove(currentClass.slide1);
-    currentView.classList.remove('hidden');
-    if (currentClass.slide2 !== ANIMATION3) {
-      currentView.classList.add(ANIMATION3);
+    if (currentClass.slide1 === ANIMATION3 ||
+      currentClass.slide1 === ANIMATION4) {
+      if (currentClass.slide1 !== ANIMATION3) {
+        currentClass.slide1 = ANIMATION3;
+      } else {
+        currentClass.slide1 = ANIMATION4;
+      }
     } else {
-      currentView.classList.add(ANIMATION4);
+      currentClass.slide1 = ANIMATION4;
     }
-    currentClass.slide1 = ANIMATION3;
-    // console.log('End of Slide2:', slide1.classList, slide2.classList);
+    currentView.classList.add(currentClass.slide1);
+    
+    console.log('slide1: CurrentClass AFTER', currentClass);
+
+    console.log('Now it is Slide-1!');
   }
-  // currentView.classList.add()
-  // if (currentView.)
 }
 
 function handlerRightSlide(e) {
   changeSliderColor('right', SLIDES);
+  if (firstRun) {
+    firstRun = !firstRun;
+    slide2.classList.toggle(HIDDEN);
+  }
+
+  if (currentView.classList.value.indexOf('slide-1') !== -1) {
+    console.log('It was Slide-1!');
+
+    console.log('Current', currentView);
+    console.log('slide1: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide1);
+    if (currentClass.slide1 !== ANIMATION2) {
+      currentClass.slide1 = ANIMATION2;
+    } else {
+      currentClass.slide1 = ANIMATION1;
+    }
+    currentView.classList.add(currentClass.slide1);
+
+    console.log('slide1: CurrentClass AFTER', currentClass);
+
+    currentView = slide2; // change slide1 -> slide2
+
+    console.log('slide2: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide2);
+    if (currentClass.slide2 !== ANIMATION1) {
+      currentClass.slide2 = ANIMATION1;
+    } else {
+      currentClass.slide2 = ANIMATION2;
+    }
+    currentView.classList.add(currentClass.slide2);
+
+    console.log('slide2: CurrentClass AFTER', currentClass);
+
+    console.log('Now it is Slide-2!');
+    // console.log('End of Slide1:', slide1.classList, slide2.classList);
+  } else {
+    console.log('It was Slide-2!');
+
+    console.log('Current', currentView);
+    console.log('slide2: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide2);
+    if (currentClass.slide1 === ANIMATION1 ||
+      currentClass.slide1 === ANIMATION2) {
+      if (currentClass.slide2 !== ANIMATION1) {
+        currentClass.slide2 = ANIMATION1;
+      } else {
+        currentClass.slide2 = ANIMATION2;
+      }
+    } else {
+      currentClass.slide2 = ANIMATION2;
+    }
+    currentView.classList.add(currentClass.slide2);
+
+    console.log('slide2: CurrentClass AFTER', currentClass);
+
+    currentView = slide1; // make slide2 -> slide1
+
+    console.log('slide1: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide1);
+    if (currentClass.slide1 === ANIMATION1 ||
+      currentClass.slide1 === ANIMATION2) {
+      if (currentClass.slide1 !== ANIMATION2) {
+        currentClass.slide1 = ANIMATION2;
+      } else {
+        currentClass.slide1 = ANIMATION1;
+      }
+    } else {
+      currentClass.slide1 = ANIMATION1;
+    }
+    currentView.classList.add(currentClass.slide1);
+
+    console.log('slide1: CurrentClass AFTER', currentClass);
+
+    console.log('Now it is Slide-1!');
+  }
 }
 
 // --------------------- Portfolio section --------------------- //
@@ -317,7 +409,7 @@ const headerMenu = document.querySelector('.header nav ul');
 // set default active class to ul > li > a:first-child
 let lastHeaderMenuActiveTab = headerMenu.firstElementChild.firstElementChild;
 let lastHeaderMenuClickedTab = lastHeaderMenuActiveTab;
-let isScrollEvent = true;
+let isScrollEvent = true; // to store and have difference between clicked & scroll
 headerMenu.addEventListener('click', handlerHeaderMenu);
 
 // --------------------- Slider section --------------------- //
@@ -325,27 +417,23 @@ const carousel = document.getElementsByClassName('carousel');
 const carouselInner = document.querySelector('div.carousel-inner');
 const leftArrow = carouselInner.firstElementChild;
 const rightArrow = carouselInner.lastElementChild;
-// console.log(leftArrow);
-// console.log(rightArrow);
 
 let currentView = document.querySelector('div.slides.slide-1');
+const slide1 = currentView;
+const slide2 = slide1.nextElementSibling;
+let firstRun = true; // to unhide second slide if this is first run
 
 const ANIMATION1 = 'animation1';
 const ANIMATION2 = 'animation2';
 const ANIMATION3 = 'animation3';
 const ANIMATION4 = 'animation4';
-
-let currentClass = {
+const currentClass = {
   slide1: 'animation',
   slide2: 'animation'
 }
-
 const SLIDE = 'slide';
 const SLIDES = ['slide-1', 'slide-2'];
-// const SLIDES_LIST = {
-//   'slide-1': 'slide-1',
-//   'slide-2': 'slide-2'
-// }
+const HIDDEN = 'hidden';
 
 leftArrow.addEventListener('click', handlerLeftSlide);
 rightArrow.addEventListener('click', handlerRightSlide);
