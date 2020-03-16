@@ -202,7 +202,8 @@ function handlerLeftSlide(e) {
   changeSliderColor('left', SLIDES);
   if (firstRun) {
     firstRun = !firstRun;
-    slide2.classList.toggle(HIDDEN);
+    slide1.classList.remove(HIDDEN);
+    slide2.classList.remove(HIDDEN);
   }
 
   if (currentView.classList.value.indexOf('slide-1') !== -1) {
@@ -280,7 +281,8 @@ function handlerRightSlide(e) {
   changeSliderColor('right', SLIDES);
   if (firstRun) {
     firstRun = !firstRun;
-    slide2.classList.toggle(HIDDEN);
+    slide1.classList.remove(HIDDEN);
+    slide2.classList.remove(HIDDEN);
   }
 
   if (currentView.classList.value.indexOf('slide-1') !== -1) {
@@ -353,6 +355,10 @@ function handlerRightSlide(e) {
 
     console.log('Now it is Slide-1!');
   }
+}
+
+function handlerSliderButtonUnlockIPhone(index) {
+  lockedScreens[index].classList.toggle('locked');
 }
 
 // --------------------- Portfolio section --------------------- //
@@ -437,6 +443,13 @@ const HIDDEN = 'hidden';
 
 leftArrow.addEventListener('click', handlerLeftSlide);
 rightArrow.addEventListener('click', handlerRightSlide);
+
+const buttonsUnlockIPhone = document.querySelectorAll('.button-on-screen');
+const lockedScreens = document.querySelectorAll('.iphone-off-screen');
+buttonsUnlockIPhone.forEach((button, i) => {
+  button.addEventListener('click',
+    handlerSliderButtonUnlockIPhone.bind(null, i));
+});
 
 // --------------------- Portfolio section --------------------- //
 const portfolioList = document.getElementsByClassName('portfolio-list')[0];
