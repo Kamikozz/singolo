@@ -351,7 +351,7 @@ body {
 .slides .iphone .iphone-off-screen {
   background-color: rgba(0, 0, 0, 0);
 
-  transition: background-color 0.5s ease-in;
+  transition: background-color 0.3s ease-in;
 }
 
 .slides .iphone .button-on-screen {
@@ -843,10 +843,12 @@ body {
   0% {
     top: 200px;
     opacity: 0;
+    animation-timing-function: ease-out;
   }
   100% {
     top: 0;
     opacity: 1;
+    animation-timing-function: ease-out;
   }
 }
 
@@ -854,15 +856,17 @@ body {
   0% {
     top: 0;
     opacity: 1;
+    animation-timing-function: ease-in;
   }
   100% {
     top: 200px;
     opacity: 0;
+    animation-timing-function: ease-in;
   }
 }
 
 .modal-window .modal-window-wrapper.pop-up {
-  animation: pop-up 0.5s ease-out, box-shadow 0.25s ease-in;
+  animation: pop-up 0.5s forwards, box-shadow 0.25s ease-in;
 }
 
 .modal-window .modal-window-wrapper.pop-down {
@@ -874,7 +878,7 @@ body {
 
   min-width: 200px;
   max-width: 400px;
-  min-height: 200px;
+  min-height: 100px;
   max-height: 500px;
   padding: 20px;
 
