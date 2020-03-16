@@ -104,6 +104,24 @@ function toggleActiveTab(previousTab, nextTab) {
   nextTab.classList.add(ACTIVE_NAME);
 }
 
+/**
+ * Toggles pop up. If unhide = true, then unhide, add overflow:hidden.
+ * Else hide, delete overflow: hidden
+ * @param {HTMLElement} element what element is pop up
+ * @param {Boolean} unhide if true -> unhides pop-up, animation pop-up; if false -> hides pop-up, animation pop-down
+ */
+function togglePopUp(element, unhide) {
+  element.classList.toggle(POP_UP);
+  element.classList.toggle(POP_DOWN);
+
+  if (unhide) {
+    quoteModalWindow.classList.toggle(HIDDEN);
+    document.body.style = 'overflow: hidden';
+  } else {
+    document.body.style.removeProperty('overflow');
+  }
+}
+
 // Event handlers
 // ------------------------- Common ------------------------- //
 function handlerPageScroll(e) {
@@ -403,6 +421,48 @@ function handlerPortfolioImages(e) {
   lastPortfolioActiveImg = e.target;
 }
 
+// ----------------------- Quote section ----------------------- //
+function handlerQuoteSubmitButton(e) {
+  if (quoteSubmitButton.parentElement.checkValidity()) {
+    e.preventDefault();
+
+    if (quoteSubjectField.value.length) {
+      quoteModalWindowSubjectHeader.textContent = 'Тема:';
+      quoteModalWindowSubjectBody.textContent = quoteSubjectField.value;
+    } else {
+      // set default values
+      quoteModalWindowSubjectHeader.textContent = 'Без темы';
+      quoteModalWindowSubjectBody.textContent = '';
+    }
+
+    if (quoteDescriptionField.value.length) {
+      quoteModalWindowDescriptionHeader.textContent = 'Описание:';
+      quoteModalWindowDescriptionBody.textContent = quoteDescriptionField.value;
+    } else {
+      // set default values
+      quoteModalWindowDescriptionHeader.textContent = 'Без описания';
+      quoteModalWindowDescriptionBody.textContent = '';
+    }
+
+    togglePopUp(quoteModalWindow.firstElementChild, true); //  unhide
+  }
+}
+
+function handlerQuoteHideModalWindow(e) {
+  if (document.body.style.getPropertyValue('overflow') !== HIDDEN) {
+    quoteModalWindow.classList.toggle(HIDDEN);
+  }
+}
+
+function handlerQuoteHideModalWindowOkButton(e) {
+  togglePopUp(quoteModalWindow.firstElementChild, false); // hide
+}
+
+function handlerQuoteHideModalWindowOuterArea(e) {
+  if (e.target.className !== 'modal-window') return;
+  togglePopUp(quoteModalWindow.firstElementChild, false); // hide
+}
+
 // Constants, Variables & Event registration
 // ------------------------- Common ------------------------- //
 const ACTIVE_NAME = 'active';
@@ -466,3 +526,28 @@ portfolioTabs.addEventListener('click', handlerPortfolioTabs);
 // images handling
 let lastPortfolioActiveImg = '';
 portfolioList.addEventListener('click', handlerPortfolioImages);
+
+// ----------------------- Quote section ----------------------- //
+const quoteSubmitButton = document.getElementsByClassName('quote-form')[0].lastElementChild;
+const quoteDescriptionField = quoteSubmitButton.previousElementSibling.lastElementChild;
+const quoteSubjectField = quoteDescriptionField.previousElementSibling;
+
+const quoteModalWindow = document.getElementsByClassName('modal-window')[0];
+
+const quoteModalWindowSubjectHeader = quoteModalWindow.firstElementChild.firstElementChild.nextElementSibling;
+const quoteModalWindowSubjectBody = quoteModalWindowSubjectHeader.nextElementSibling;
+const quoteModalWindowDescriptionHeader = quoteModalWindowSubjectBody.nextElementSibling;
+const quoteModalWindowDescriptionBody = quoteModalWindowDescriptionHeader.nextElementSibling;
+
+const quoteModalWindowOkButton = quoteModalWindowDescriptionBody.nextElementSibling;
+
+// animation names for quote modal window
+const POP_UP = 'pop-up';
+const POP_DOWN = 'pop-down';
+
+quoteSubmitButton.addEventListener('click', handlerQuoteSubmitButton);
+
+quoteModalWindow.addEventListener('animationend', handlerQuoteHideModalWindow);
+
+quoteModalWindowOkButton.addEventListener('click', handlerQuoteHideModalWindowOkButton);
+quoteModalWindow.addEventListener('click', handlerQuoteHideModalWindowOuterArea);
