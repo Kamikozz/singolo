@@ -710,7 +710,7 @@ body {
 
 .quote-block {
   padding-top: 62px;
-  padding-bottom: 22px; /* fix bottom Pixel Perfect */
+  padding-bottom: 17px; /* fix bottom Pixel Perfect */
 
   background-color: #f06c64;
   border-bottom: 6px solid #ea676b;
@@ -729,6 +729,7 @@ body {
 .quote-container {
   display: flex;
   margin-top: 44px;
+  margin-bottom: 5px;
 
   justify-content: space-between;
 }
