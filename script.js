@@ -112,7 +112,7 @@ function handlerPageScroll(e) {
     lastHeaderMenuActiveTab.getAttribute('href').substring(1);
   const currentLinkYOffset = anchors[currentLinkName].offsetTop;
 
-  const difference = 10; // gap between 2 anchors
+  const difference = 30; // gap between 2 anchors
   if (currentLinkYOffset - window.pageYOffset > difference) {
     // get previous tab
     const prevLink = lastHeaderMenuActiveTab
