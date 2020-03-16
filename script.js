@@ -111,14 +111,20 @@ function toggleActiveTab(previousTab, nextTab) {
  * @param {Boolean} unhide if true -> unhides pop-up, animation pop-up; if false -> hides pop-up, animation pop-down
  */
 function togglePopUp(element, unhide) {
-  element.classList.toggle(POP_UP);
-  element.classList.toggle(POP_DOWN);
+  // clear pop-up & pop-down classes
+  // to prevent setting the wrong classes by fast clicks by user
+  element.classList.remove(POP_UP);
+  element.classList.remove(POP_DOWN);
 
   if (unhide) {
     quoteModalWindow.classList.toggle(HIDDEN);
-    document.body.style = 'overflow: hidden';
+    document.body.style.overflow = 'hidden';
+
+    element.classList.toggle(POP_UP);
   } else {
     document.body.style.removeProperty('overflow');
+
+    element.classList.add(POP_DOWN);
   }
 }
 
