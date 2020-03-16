@@ -66,6 +66,10 @@ body {
   display: none !important;
 }
 
+.disabled {
+  pointer-events: none;
+}
+
 /* singolo1 */
 /* header */
 

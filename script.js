@@ -217,6 +217,8 @@ function handlerHeaderMenu(e) {
 
 // --------------------- Slider section --------------------- //
 function handlerLeftSlide(e) {
+  e.target.classList.toggle(DISABLED);
+
   changeSliderColor('left', SLIDES);
   if (firstRun) {
     firstRun = !firstRun;
@@ -296,6 +298,8 @@ function handlerLeftSlide(e) {
 }
 
 function handlerRightSlide(e) {
+  e.target.classList.toggle(DISABLED);
+
   changeSliderColor('right', SLIDES);
   if (firstRun) {
     firstRun = !firstRun;
@@ -372,6 +376,16 @@ function handlerRightSlide(e) {
     console.log('slide1: CurrentClass AFTER', currentClass);
 
     console.log('Now it is Slide-1!');
+  }
+}
+
+function handlerSliderFastClicks(e) {
+  if (leftArrow.classList.value.indexOf(DISABLED) !== -1) {
+    leftArrow.classList.toggle(DISABLED);
+  }
+
+  if (rightArrow.classList.value.indexOf(DISABLED) !== -1) {
+    rightArrow.classList.toggle(DISABLED);
   }
 }
 
@@ -500,10 +514,13 @@ const currentClass = {
 }
 const SLIDE = 'slide';
 const SLIDES = ['slide-1', 'slide-2'];
+const DISABLED = 'disabled'; // cursor-events: none;
 const HIDDEN = 'hidden';
 
 leftArrow.addEventListener('click', handlerLeftSlide);
 rightArrow.addEventListener('click', handlerRightSlide);
+
+currentView.addEventListener('animationend', handlerSliderFastClicks);
 
 const buttonsUnlockIPhone = document.querySelectorAll('.button-on-screen');
 const lockedScreens = document.querySelectorAll('.iphone-off-screen');
