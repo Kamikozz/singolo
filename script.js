@@ -371,23 +371,24 @@ function handlerPortfolioTabs(e) {
   lastPortfolioActiveTab = e.target;
 
   // get children of portfolioList & shuffle them
-  const arr = shuffle(portfolioList.children);
+  const shuffledArr = shuffle(portfolioList.children);
 
-
+  portfolioList.append(...shuffledArr);
   // get new portfolioList with parent = 'portfolio-list'
-  const newPortfolioList = arr[0].parentElement;
+  // const newPortfolioList = shuffledArr[0].parentElement;
 
   // delete from DOM the old portfolio-list
-  portfolioList.remove();
+  // portfolioList.remove();
 
+  // console.log([...portfolioList.children], [...newPortfolioList.children]);
   // remove all of the children from new portfolioList
   // (from old porfolio-list)
-  for (let i = 0; i < arr.length; i++) {
-    newPortfolioList.childNodes[0].remove();
-  }
+  // for (let i = 0; i < shuffledArr.length; i++) {
+  //   newPortfolioList.childNodes[0].remove();
+  // }
 
-  newPortfolioList.append(...arr); // add shuffled items into new portfolio
-  parent.append(newPortfolioList); // render DOM with ready new portfolio
+  // newPortfolioList.append(...shuffledArr); // add shuffled items into new portfolio
+  // parent.append(newPortfolioList); // render DOM with ready new portfolio
 }
 
 function handlerPortfolioImages(e) {
