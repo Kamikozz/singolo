@@ -225,87 +225,6 @@ function handlerHeaderMenu(e) {
 function handlerLeftSlide(e) {
   e.target.classList.toggle(DISABLED);
 
-  changeSliderColor('left', SLIDES);
-  if (firstRun) {
-    firstRun = !firstRun;
-    slide1.classList.remove(HIDDEN);
-    slide2.classList.remove(HIDDEN);
-  }
-
-  if (currentView.classList.value.indexOf('slide-1') !== -1) {
-    console.log('It was Slide-1!');
-
-    console.log('Current', currentView);
-    console.log('slide1: CurrentClass BEFORE', currentClass);
-    currentView.classList.remove(currentClass.slide1);
-    if (currentClass.slide1 !== ANIMATION3) {
-      currentClass.slide1 = ANIMATION3;
-    } else {
-      currentClass.slide1 = ANIMATION4;
-    }
-    currentView.classList.add(currentClass.slide1);
-
-    console.log('slide1: CurrentClass AFTER', currentClass);
-
-    currentView = slide2; // change slide1 -> slide2
-
-    console.log('slide2: CurrentClass BEFORE', currentClass);
-    currentView.classList.remove(currentClass.slide2);
-    if (currentClass.slide2 !== ANIMATION4) {
-      currentClass.slide2 = ANIMATION4;
-    } else {
-      currentClass.slide2 = ANIMATION3;
-    }
-    currentView.classList.add(currentClass.slide2);
-
-    console.log('slide2: CurrentClass AFTER', currentClass);
-
-    console.log('Now it is Slide-2!');
-    // console.log('End of Slide1:', slide1.classList, slide2.classList);
-  } else {
-    console.log('It was Slide-2!');
-
-    console.log('slide2: CurrentClass BEFORE', currentClass);
-    currentView.classList.remove(currentClass.slide2);
-    if (currentClass.slide1 === ANIMATION3 ||
-      currentClass.slide1 === ANIMATION4) {
-      if (currentClass.slide2 !== ANIMATION4) {
-        currentClass.slide2 = ANIMATION4;
-      } else {
-        currentClass.slide2 = ANIMATION3;
-      }
-    } else {
-      currentClass.slide2 = ANIMATION3;
-    }
-    currentView.classList.add(currentClass.slide2);
-
-    console.log('slide2: CurrentClass AFTER', currentClass);
-
-    currentView = slide1; // change slide2 -> slide1
-
-    console.log('slide1: CurrentClass BEFORE', currentClass);
-    currentView.classList.remove(currentClass.slide1);
-    if (currentClass.slide1 === ANIMATION3 ||
-      currentClass.slide1 === ANIMATION4) {
-      if (currentClass.slide1 !== ANIMATION3) {
-        currentClass.slide1 = ANIMATION3;
-      } else {
-        currentClass.slide1 = ANIMATION4;
-      }
-    } else {
-      currentClass.slide1 = ANIMATION4;
-    }
-    currentView.classList.add(currentClass.slide1);
-    
-    console.log('slide1: CurrentClass AFTER', currentClass);
-
-    console.log('Now it is Slide-1!');
-  }
-}
-
-function handlerRightSlide(e) {
-  e.target.classList.toggle(DISABLED);
-
   changeSliderColor('right', SLIDES);
   if (firstRun) {
     firstRun = !firstRun;
@@ -379,6 +298,87 @@ function handlerRightSlide(e) {
     }
     currentView.classList.add(currentClass.slide1);
 
+    console.log('slide1: CurrentClass AFTER', currentClass);
+
+    console.log('Now it is Slide-1!');
+  }
+}
+
+function handlerRightSlide(e) {
+  e.target.classList.toggle(DISABLED);
+
+  changeSliderColor('left', SLIDES);
+  if (firstRun) {
+    firstRun = !firstRun;
+    slide1.classList.remove(HIDDEN);
+    slide2.classList.remove(HIDDEN);
+  }
+
+  if (currentView.classList.value.indexOf('slide-1') !== -1) {
+    console.log('It was Slide-1!');
+
+    console.log('Current', currentView);
+    console.log('slide1: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide1);
+    if (currentClass.slide1 !== ANIMATION3) {
+      currentClass.slide1 = ANIMATION3;
+    } else {
+      currentClass.slide1 = ANIMATION4;
+    }
+    currentView.classList.add(currentClass.slide1);
+
+    console.log('slide1: CurrentClass AFTER', currentClass);
+
+    currentView = slide2; // change slide1 -> slide2
+
+    console.log('slide2: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide2);
+    if (currentClass.slide2 !== ANIMATION4) {
+      currentClass.slide2 = ANIMATION4;
+    } else {
+      currentClass.slide2 = ANIMATION3;
+    }
+    currentView.classList.add(currentClass.slide2);
+
+    console.log('slide2: CurrentClass AFTER', currentClass);
+
+    console.log('Now it is Slide-2!');
+    // console.log('End of Slide1:', slide1.classList, slide2.classList);
+  } else {
+    console.log('It was Slide-2!');
+
+    console.log('slide2: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide2);
+    if (currentClass.slide1 === ANIMATION3 ||
+      currentClass.slide1 === ANIMATION4) {
+      if (currentClass.slide2 !== ANIMATION4) {
+        currentClass.slide2 = ANIMATION4;
+      } else {
+        currentClass.slide2 = ANIMATION3;
+      }
+    } else {
+      currentClass.slide2 = ANIMATION3;
+    }
+    currentView.classList.add(currentClass.slide2);
+
+    console.log('slide2: CurrentClass AFTER', currentClass);
+
+    currentView = slide1; // change slide2 -> slide1
+
+    console.log('slide1: CurrentClass BEFORE', currentClass);
+    currentView.classList.remove(currentClass.slide1);
+    if (currentClass.slide1 === ANIMATION3 ||
+      currentClass.slide1 === ANIMATION4) {
+      if (currentClass.slide1 !== ANIMATION3) {
+        currentClass.slide1 = ANIMATION3;
+      } else {
+        currentClass.slide1 = ANIMATION4;
+      }
+    } else {
+      currentClass.slide1 = ANIMATION4;
+    }
+    currentView.classList.add(currentClass.slide1);
+    
     console.log('slide1: CurrentClass AFTER', currentClass);
 
     console.log('Now it is Slide-1!');

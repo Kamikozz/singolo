@@ -230,16 +230,16 @@ body {
 }
 
 .animation1 {
-  animation: from-left-to-view 1s forwards;
+  animation: from-left-to-view 0.7s forwards;
 }
 .animation2 {
-  animation: from-view-to-right 1s forwards;
+  animation: from-view-to-right 0.7s forwards;
 }
 .animation3 {
-  animation: from-view-to-left 1s forwards;
+  animation: from-view-to-left 0.7s forwards;
 }
 .animation4 {
-  animation: from-right-to-view 1s forwards;
+  animation: from-right-to-view 0.7s forwards;
 }
 
 .carousel {
