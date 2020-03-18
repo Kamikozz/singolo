@@ -801,6 +801,16 @@ body {
   -webkit-text-fill-color: #f0d8d9;
 }
 
+/* styling scrollbar */
+.quote-container .quote-form > fieldset > textarea::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color:#f0d8d9;
+}
+
+.quote-container .quote-form > fieldset > textarea::-webkit-scrollbar{
+  width: 8px;
+}
+
 .quote-container .quote-form > button {
   padding: 8px 15px;
   /* margin-top: 1px; */
@@ -879,7 +889,7 @@ body {
   min-width: 200px;
   max-width: 400px;
   min-height: 100px;
-  max-height: 500px;
+  max-height: 540px;
   padding: 20px;
 
   font-family: inherit;
@@ -916,16 +926,16 @@ body {
 
   overflow: hidden;
   overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .modal-window .modal-window-wrapper p.subject {
-  max-height: 100px;
+  max-height: 91px;
 }
 
 .modal-window .modal-window-wrapper p.description {
   max-height: 300px;
   
-  overflow-wrap: break-word;
   overflow-y: scroll;
 }
 
