@@ -475,10 +475,7 @@ function handlerQuoteHideModalWindow(e) {
 }
 
 function handlerQuoteHideModalWindowOkButton(e) {
-  quoteNameField.value = '';
-  quoteEmailField.value = '';
-  quoteSubjectField.value = '';
-  quoteDescriptionField.value = '';
+  quoteSubmitButton.parentElement.reset();
 
   togglePopUp(quoteModalWindow.firstElementChild, false); // hide
 }
@@ -486,10 +483,7 @@ function handlerQuoteHideModalWindowOkButton(e) {
 function handlerQuoteHideModalWindowOuterArea(e) {
   if (e.target.className !== 'modal-window') return;
 
-  quoteNameField.value = '';
-  quoteEmailField.value = '';
-  quoteSubjectField.value = '';
-  quoteDescriptionField.value = '';
+  quoteSubmitButton.parentElement.reset();
 
   togglePopUp(quoteModalWindow.firstElementChild, false); // hide
 }
@@ -565,8 +559,6 @@ portfolioList.addEventListener('click', handlerPortfolioImages);
 const quoteSubmitButton = document.getElementsByClassName('quote-form')[0].lastElementChild;
 const quoteDescriptionField = quoteSubmitButton.previousElementSibling.lastElementChild;
 const quoteSubjectField = quoteDescriptionField.previousElementSibling;
-const quoteEmailField = quoteSubjectField.previousElementSibling; // to clear the inputs
-const quoteNameField = quoteEmailField.previousElementSibling;    // to clear the inputs
 
 const quoteModalWindow = document.getElementsByClassName('modal-window')[0];
 
