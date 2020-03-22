@@ -1087,7 +1087,8 @@ body {
 }
 
 .footer .footer-panel > span {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 900;
   color: #666d89;
 }
 
