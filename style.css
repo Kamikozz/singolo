@@ -278,6 +278,10 @@ body {
   padding-bottom: 15px;
 }
 
+.carousel div {
+  line-height: 0;
+}
+
 .carousel.slide-1,
 .carousel.slide-2 {
   transition: background-color 1s linear, border 1s linear;
@@ -711,11 +715,13 @@ body {
 }
 
 .portfolio-block .portfolio-list div {
+  line-height: 0;
 }
 
 .portfolio-block .portfolio-list div img {
   width: 100%;
 
+  line-height: 0;
 
   cursor: pointer;
 }
