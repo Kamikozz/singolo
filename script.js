@@ -13,6 +13,22 @@ function curClass(list, className) {
 }
 
 /**
+ * Returns current screen number using window.innerWidth
+ * @returns {Number} current screen in the order
+ */
+function getCurrentScreen() {
+  let currentScreen;
+
+  if (window.innerWidth < 768) {
+    currentScreen = 0;
+  } else {
+    currentScreen = 1;
+  }
+
+  return currentScreen;
+}
+
+/**
  * Changes the section slider's color
  * @param {String} direction indicates the direction 'left'/'right'
  * @param {Array} slidesList array of 'slide-1', 'slide-2', 'slide-3', etc.
@@ -207,6 +223,27 @@ function handlerPageScroll(e) {
     const clientHeight = document.documentElement.clientHeight;
     return window.scrollY + 1 >= scrollHeight - clientHeight;
   }
+}
+
+function handlerPageResize(e) {
+  let currentScreen = getCurrentScreen();
+  if (currentScreen === lastScreen) return;
+
+  switch(currentScreen) {
+    case 0:
+      break;
+    case 1: {
+      // clear burger menu active classes
+      burgerMenuLogoOpen.classList.remove(ACTIVE_NAME); // return singolo position
+      burgerMenuButtonOpen.classList.remove(ACTIVE_NAME); // remove rotate
+      burgerMenuModalWindow.classList.add(HIDDEN); // remove shadow
+      burgerMenuOpen.classList.remove(ACTIVE_NAME); // close burger menu
+      break;
+    }
+    default: break;
+  }
+
+  lastScreen = currentScreen;
 }
 
 // --------------------- Header section --------------------- //
@@ -529,6 +566,9 @@ const MODAL_WINDOW = 'modal-window';
 
 const anchors = document.getElementsByClassName('anchor-link');
 window.addEventListener('scroll', handlerPageScroll);
+
+let lastScreen = getCurrentScreen();
+window.addEventListener('resize', handlerPageResize);
 
 // --------------------- Header section --------------------- //
 // burger menu handling (small-screen)
