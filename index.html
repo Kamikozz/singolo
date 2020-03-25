@@ -10,12 +10,17 @@
 </head>
 
 <body>
+  <a class="anchor-link" id="home"></a>
   <header class="header">
     <div class="wrapper">
       <div class="header-inner">
-        <a class="anchor-link" id="home"></a>
-        <h1>Singolo</h1>
-        <nav>
+        <div class="burger-button-block" tabindex="0">
+          <button class="burger-button-block__button">
+            <div class="burger-button-block__dash"></div>
+          </button>
+        </div>
+        <a class="header__logo" href="#"><h1>Singolo</h1></a>
+        <nav class="header__nav">
           <ul>
             <li><a  class="active"
                     href="#home"
@@ -179,30 +184,18 @@
           <li tabindex="0">Artwork</li>
         </ul>
         <div class="portfolio-list">
-          <img src="assets/image1.png" alt="blue yellow ship"
-            tabindex="0">
-          <img src="assets/image2.png" alt="balloon with icecream & suitcase"
-            tabindex="0">
-          <img src="assets/image3.png" alt="black and white architecture on the planet"
-            tabindex="0">
-          <img src="assets/image4.png" alt="robot with heart"
-            tabindex="0">
-          <img src="assets/image5.png" alt="black strange hares"
-            tabindex="0">
-          <img src="assets/image6.png" alt="sdk and ide"
-            tabindex="0">
-          <img src="assets/image7.png" alt="futuristic picture"
-            tabindex="0">
-          <img src="assets/image8.png" alt="birds on the tree"
-            tabindex="0">
-          <img src="assets/image9.png" alt="green sleepy monster as a sphere"
-            tabindex="0">
-          <img src="assets/image10.png" alt="video killed the radio"
-            tabindex="0">
-          <img src="assets/image11.png" alt="white crazy monster with sharp teeth"
-            tabindex="0">
-          <img src="assets/image12.png" alt="broken green sensor"
-            tabindex="0">
+          <div><img src="assets/image1.png" alt="blue yellow ship" tabindex="0"></div>
+          <div><img src="assets/image2.png" alt="balloon with icecream & suitcase" tabindex="0"></div>
+          <div><img src="assets/image3.png" alt="black and white architecture on the planet" tabindex="0"></div>
+          <div><img src="assets/image4.png" alt="robot with heart" tabindex="0"></div>
+          <div><img src="assets/image5.png" alt="black strange hares" tabindex="0"></div>
+          <div><img src="assets/image6.png" alt="sdk and ide" tabindex="0"></div>
+          <div><img src="assets/image7.png" alt="futuristic picture" tabindex="0"></div>
+          <div><img src="assets/image8.png" alt="birds on the tree" tabindex="0"></div>
+          <div><img src="assets/image9.png" alt="green sleepy monster as a sphere" tabindex="0"></div>
+          <div><img src="assets/image10.png" alt="video killed the radio" tabindex="0"></div>
+          <div><img src="assets/image11.png" alt="white crazy monster with sharp teeth" tabindex="0"></div>
+          <div><img src="assets/image12.png" alt="broken green sensor" tabindex="0"></div>
         </div>
       </div>
     </section>
@@ -272,7 +265,7 @@
               <input type="text" placeholder="Subject" name="subject">
               <textarea placeholder="Describe your project in detail..." name="description" maxlength="1000"></textarea>
             </fieldset>
-            <button type="submit">Submit</button>
+            <button type="submit">Send</button>
           </form>
           <div class="quote-contact-info">
             <h3>Contact Information</h3>
@@ -301,8 +294,9 @@
       </div>
     </div>
   </footer>
-  <!-- Modal window -->
-  <div class="modal-window hidden">
+  <!-- Modal windows -->
+  <!-- Quote modal -->
+  <div class="modal-window modal-window_all hidden">
     <div class="modal-window-wrapper pop-down">
       <h3>Письмо отправлено</h3>
       <h4>Тема:</h4>
@@ -312,6 +306,8 @@
       <button>OK</button>
     </div>
   </div>
+  <!-- Burger menu open modal -->
+  <div class="modal-window modal-window_except-header hidden"></div>
   <!-- Scripts -->
   <script src="script.js"></script>
 </body>

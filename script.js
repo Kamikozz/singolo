@@ -13,6 +13,22 @@ function curClass(list, className) {
 }
 
 /**
+ * Returns current screen number using window.innerWidth
+ * @returns {Number} current screen in the order
+ */
+function getCurrentScreen() {
+  let currentScreen;
+
+  if (window.innerWidth < 768) {
+    currentScreen = 0;
+  } else {
+    currentScreen = 1;
+  }
+
+  return currentScreen;
+}
+
+/**
  * Changes the section slider's color
  * @param {String} direction indicates the direction 'left'/'right'
  * @param {Array} slidesList array of 'slide-1', 'slide-2', 'slide-3', etc.
@@ -209,16 +225,74 @@ function handlerPageScroll(e) {
   }
 }
 
+function handlerPageResize(e) {
+  let currentScreen = getCurrentScreen();
+  if (currentScreen === lastScreen) return;
+
+  switch(currentScreen) {
+    case 0:
+      break;
+    case 1: {
+      // clear burger menu active classes
+      burgerMenuLogoOpen.classList.remove(ACTIVE_NAME); // return singolo position
+      burgerMenuLogoOpenMargin.classList.remove(ACTIVE_NAME); // null singolo margins
+      burgerMenuButtonOpen.classList.remove(ACTIVE_NAME); // remove rotate
+      burgerMenuModalWindow.classList.add(HIDDEN); // remove shadow
+      burgerMenuOpen.classList.remove(ACTIVE_NAME); // close burger menu
+      break;
+    }
+    default: break;
+  }
+
+  lastScreen = currentScreen;
+}
+
 // --------------------- Header section --------------------- //
+function handlerHeaderBurgerMenuButton(e) {
+  burgerMenuButton.classList.add(DISABLED);
+
+  burgerMenuButtonOpen.classList.toggle(ACTIVE_NAME);
+  burgerMenuLogoOpen.classList.toggle(ACTIVE_NAME);
+  burgerMenuLogoOpenMargin.classList.toggle(ACTIVE_NAME);
+
+  if (burgerMenuOpen.classList.value.indexOf(ACTIVE_NAME) !== -1) {
+    burgerMenuOpen.style.animationName = ANIMATION_HIDE_BURGER;
+  } else {
+    burgerMenuOpen.classList.toggle(ACTIVE_NAME);
+  }
+
+  burgerMenuModalWindow.classList.toggle(HIDDEN);
+}
+
+function handlerHeaderBurgerMenuButtonEndAnimation(e) {
+  burgerMenuButton.classList.remove(DISABLED);
+
+  if (e.target.style.animationName === ANIMATION_HIDE_BURGER) {
+    e.target.removeAttribute('style');
+    burgerMenuOpen.classList.toggle(ACTIVE_NAME);
+  }
+}
+
 function handlerHeaderMenu(e) {
-  if (e.target.tagName !== 'A') return;
-  if (lastHeaderMenuActiveTab === e.target) return;
+  let target;
+  if (window.innerWidth <= 767) {
+    target = e.target.tagName === 'LI' ? e.target.firstElementChild : e.target;
+  } else {
+    if (e.target.tagName !== 'A') return;
+    target = e.target;
+  }
 
-  toggleActiveTab(lastHeaderMenuActiveTab, e.target);
+  if (lastHeaderMenuActiveTab === target) return;
 
-  lastHeaderMenuActiveTab = e.target;
+  toggleActiveTab(lastHeaderMenuActiveTab, target);
+
+  lastHeaderMenuActiveTab = target;
   lastHeaderMenuClickedTab = lastHeaderMenuActiveTab;
   isScrollEvent = false;
+
+  if (window.innerWidth <= 767) {
+    target.click(); // click on the item, to cause default event on the anchor
+  }
 }
 
 // --------------------- Slider section --------------------- //
@@ -481,7 +555,8 @@ function handlerQuoteHideModalWindowOkButton(e) {
 }
 
 function handlerQuoteHideModalWindowOuterArea(e) {
-  if (e.target.className !== 'modal-window') return;
+  let isFoundModal = e.target.className.split(' ').filter(val => val === MODAL_WINDOW).length;
+  if (!isFoundModal) return;
 
   quoteSubmitButton.parentElement.reset();
 
@@ -491,13 +566,32 @@ function handlerQuoteHideModalWindowOuterArea(e) {
 // Constants, Variables & Event registration
 // ------------------------- Common ------------------------- //
 const ACTIVE_NAME = 'active';
+const DISABLED = 'disabled'; // cursor-events: none;
+const HIDDEN = 'hidden'; // display: none;
+const MODAL_WINDOW = 'modal-window';
 
 const anchors = document.getElementsByClassName('anchor-link');
 window.addEventListener('scroll', handlerPageScroll);
 
+let lastScreen = getCurrentScreen();
+window.addEventListener('resize', handlerPageResize);
+
 // --------------------- Header section --------------------- //
+// burger menu handling (small-screen)
+const ANIMATION_HIDE_BURGER = 'hide-menu';
+const burgerMenuButton = document.getElementsByClassName('burger-button-block')[0];
+const burgerMenuButtonOpen = burgerMenuButton.firstElementChild;
+const burgerMenuLogoOpen = burgerMenuButton.parentElement;
+const burgerMenuLogoOpenMargin = document.getElementsByClassName('header__logo')[0];
+const burgerMenuOpen = document.getElementsByClassName('header__nav')[0];
+const burgerMenuModalWindow = document.getElementsByClassName(MODAL_WINDOW)[1];
+
+burgerMenuButton.addEventListener('click', handlerHeaderBurgerMenuButton);
+burgerMenuOpen.addEventListener('animationend', handlerHeaderBurgerMenuButtonEndAnimation);
+burgerMenuModalWindow.addEventListener('click', handlerHeaderBurgerMenuButton);
+
 // menu handling
-const headerMenu = document.querySelector('.header nav ul');
+const headerMenu = document.querySelector('.header__nav ul');
 // set default active class to ul > li > a:first-child
 let lastHeaderMenuActiveTab = headerMenu.firstElementChild.firstElementChild;
 let lastHeaderMenuClickedTab = lastHeaderMenuActiveTab;
@@ -525,8 +619,6 @@ const currentClass = {
 }
 const SLIDE = 'slide';
 const SLIDES = ['slide-1', 'slide-2'];
-const DISABLED = 'disabled'; // cursor-events: none;
-const HIDDEN = 'hidden';
 
 leftArrow.addEventListener('click', handlerLeftSlide);
 rightArrow.addEventListener('click', handlerRightSlide);
@@ -560,7 +652,7 @@ const quoteSubmitButton = document.getElementsByClassName('quote-form')[0].lastE
 const quoteDescriptionField = quoteSubmitButton.previousElementSibling.lastElementChild;
 const quoteSubjectField = quoteDescriptionField.previousElementSibling;
 
-const quoteModalWindow = document.getElementsByClassName('modal-window')[0];
+const quoteModalWindow = document.getElementsByClassName(MODAL_WINDOW)[0];
 
 const quoteModalWindowSubjectHeader = quoteModalWindow.firstElementChild.firstElementChild.nextElementSibling;
 const quoteModalWindowSubjectBody = quoteModalWindowSubjectHeader.nextElementSibling;
