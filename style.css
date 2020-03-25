@@ -223,7 +223,7 @@ body {
 @keyframes from-left-to-view {
   0% {
     animation-timing-function: linear;
-    transform: translate3d(-940px, 0px, 0px);
+    transform: translate3d(-100%, 0px, 0px);
     opacity: 0;
   }
   20% {
@@ -248,7 +248,7 @@ body {
   }
   100% {
     animation-timing-function: linear;
-    transform: translate3d(940px, 0px, 0px);
+    transform: translate3d(100%, 0px, 0px);
     opacity: 0;
   }
 }
@@ -264,14 +264,14 @@ body {
   }
   100% {
     animation-timing-function: linear;
-    transform: translate3d(-940px, 0px, 0px);
+    transform: translate3d(-100%, 0px, 0px);
     opacity: 0;
   }
 }
 @keyframes from-right-to-view {
   0% {
     animation-timing-function: linear;
-    transform: translate3d(940px, 0px, 0px);
+    transform: translate3d(100%, 0px, 0px);
     opacity: 0;
   }
   20% {
@@ -354,6 +354,7 @@ body {
 .icon-previous-page,
 .icon-next-page {
   padding: 29% 0;
+
   z-index: 1;
 
   transition: transform 0.3s ease, opacity 0.2s linear;
