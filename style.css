@@ -205,6 +205,11 @@ body {
   cursor: pointer;
 }
 
+/* modal-window */
+.modal-window_except-header {
+  z-index: 4;
+}
+
 .header__logo {
   z-index: 1;
 
@@ -1225,7 +1230,6 @@ body {
 .modal-window {
   position: fixed;
   top: 0;
-  z-index: 5;
 
   display: flex;
   justify-content: center;
@@ -1235,6 +1239,10 @@ body {
   height: 100%;
 
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-window_all {
+  z-index: 5;
 }
 
 @keyframes pop-up {

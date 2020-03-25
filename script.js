@@ -221,6 +221,8 @@ function handlerHeaderBurgerMenuButton(e) {
   } else {
     burgerMenuOpen.classList.toggle(ACTIVE_NAME);
   }
+
+  burgerMenuModalWindow.classList.toggle(HIDDEN);
 }
 
 function handlerHeaderBurgerMenuButtonEndAnimation(e) {
@@ -512,7 +514,9 @@ function handlerQuoteHideModalWindowOkButton(e) {
 }
 
 function handlerQuoteHideModalWindowOuterArea(e) {
-  if (e.target.className !== MODAL_WINDOW) return;
+  let isFoundModal = e.target.className.split(' ').filter(val => val === MODAL_WINDOW).length;
+  if (!isFoundModal) return;
+
   togglePopUp(quoteModalWindow.firstElementChild, false); // hide
 }
 
@@ -533,8 +537,11 @@ const burgerMenuButton = document.getElementsByClassName('burger-button-block')[
 const burgerMenuButtonOpen = burgerMenuButton.firstElementChild;
 const burgerMenuLogoOpen = burgerMenuButton.parentElement;
 const burgerMenuOpen = document.getElementsByClassName('header__nav')[0];
+const burgerMenuModalWindow = document.getElementsByClassName(MODAL_WINDOW)[1];
+
 burgerMenuButton.addEventListener('click', handlerHeaderBurgerMenuButton);
 burgerMenuOpen.addEventListener('animationend', handlerHeaderBurgerMenuButtonEndAnimation);
+burgerMenuModalWindow.addEventListener('click', handlerHeaderBurgerMenuButton);
 
 // menu handling
 const headerMenu = document.querySelector('.header__nav ul');
