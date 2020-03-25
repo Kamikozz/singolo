@@ -210,6 +210,28 @@ function handlerPageScroll(e) {
 }
 
 // --------------------- Header section --------------------- //
+function handlerHeaderBurgerMenuButton(e) {
+  burgerMenuButton.classList.add(DISABLED);
+
+  burgerMenuButtonOpen.classList.toggle(ACTIVE_NAME);
+  burgerMenuLogoOpen.classList.toggle(ACTIVE_NAME);
+
+  if (burgerMenuOpen.classList.value.indexOf(ACTIVE_NAME) !== -1) {
+    burgerMenuOpen.style.animationName = ANIMATION_HIDE_BURGER;
+  } else {
+    burgerMenuOpen.classList.toggle(ACTIVE_NAME);
+  }
+}
+
+function handlerHeaderBurgerMenuButtonEndAnimation(e) {
+  burgerMenuButton.classList.remove(DISABLED);
+
+  if (e.target.style.animationName === ANIMATION_HIDE_BURGER) {
+    e.target.removeAttribute('style');
+    burgerMenuOpen.classList.toggle(ACTIVE_NAME);
+  }
+}
+
 function handlerHeaderMenu(e) {
   let target;
   if (window.innerWidth <= 767) {
@@ -502,8 +524,17 @@ const anchors = document.getElementsByClassName('anchor-link');
 window.addEventListener('scroll', handlerPageScroll);
 
 // --------------------- Header section --------------------- //
+// burger menu handling (small-screen)
+const ANIMATION_HIDE_BURGER = 'hide-menu';
+const burgerMenuButton = document.getElementsByClassName('burger-button-block')[0];
+const burgerMenuButtonOpen = burgerMenuButton.firstElementChild;
+const burgerMenuLogoOpen = burgerMenuButton.parentElement;
+const burgerMenuOpen = document.getElementsByClassName('header__nav')[0];
+burgerMenuButton.addEventListener('click', handlerHeaderBurgerMenuButton);
+burgerMenuOpen.addEventListener('animationend', handlerHeaderBurgerMenuButtonEndAnimation);
+
 // menu handling
-const headerMenu = document.querySelector('.header nav ul');
+const headerMenu = document.querySelector('.header__nav ul');
 // set default active class to ul > li > a:first-child
 let lastHeaderMenuActiveTab = headerMenu.firstElementChild.firstElementChild;
 let lastHeaderMenuClickedTab = lastHeaderMenuActiveTab;
