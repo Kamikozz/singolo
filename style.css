@@ -683,14 +683,11 @@ body {
   }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
+  .slides.slide-1 .iphone:first-child {
+    margin-right: 26.57px;
+  }
 }
-
-@media only screen and (max-width: 374px) {
-}
-
-/* .slides.slide-1 .iphone-vertical {
-} */
 
 .slides.slide-1 .iphone-vertical .iphone-off-screen {
   top: calc(65 * 100% / 483);
@@ -803,13 +800,14 @@ body {
   }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 767px) {
-  .services-item {
+@media only screen and (max-width: 767px) {
+  .services-list {
+    display: block;
   }
-}
-
-@media only screen and (max-width: 374px) {
+  
   .services-item {
+    height: unset;
+    margin-bottom: 32px;
   }
 }
 
@@ -828,6 +826,12 @@ body {
 
   text-align: justify;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 374px) {
+  .our-services-block .services-list .services-item > p {
+    overflow: auto;
+  }
 }
 
 /* singolo2 */
@@ -932,6 +936,10 @@ body {
   .portfolio-block .portfolio-list div:nth-child(4n + 1) {
     margin-left: 0;
   }
+
+  .portfolio-block .portfolio-list div:nth-child(n + 13) {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1019px) {
@@ -952,10 +960,34 @@ body {
   .portfolio-block .portfolio-list div:nth-child(3n + 1) {
     margin-left: 0;
   }
+
+  .portfolio-block .portfolio-list div:nth-child(n + 13) {
+    display: none;
+  }
 }
 
-.portfolio-block .portfolio-list div:nth-child(n + 13) {
-  display: none;
+@media only screen and (max-width: 767px) {
+  .portfolio-block .portfolio-list div {
+    margin: 6.5px;
+
+    flex: 1 0 40%;
+  }
+  .portfolio-block .portfolio-list div:nth-child(-n + 2) {
+    margin-top: 0;
+  }
+  .portfolio-block .portfolio-list div:nth-child(n + 7) {
+    margin-bottom: 0;
+  }
+  .portfolio-block .portfolio-list div:nth-child(2n) {
+    margin-right: 0;
+  }
+  .portfolio-block .portfolio-list div:nth-child(2n + 1) {
+    margin-left: 0;
+  }
+
+  .portfolio-block .portfolio-list div:nth-child(n + 9) {
+    display: none;
+  }
 }
 
 .portfolio-block .portfolio-list img.active {
@@ -1003,14 +1035,6 @@ body {
   width: 100%;
 }
 
-.about-us-block .people-list > .people-item:first-child {
-  margin-left: 0;
-}
-
-.about-us-block .people-list > .people-item:last-child {
-  margin-right: 0;
-}
-
 .about-us-block .people-list > .people-item > img {
   width: 100%;
 }
@@ -1019,21 +1043,42 @@ body {
   .about-us-block .people-list > .people-item {
     margin: 0 calc((100% - 3 * 300px) / 4);
   }
+
+  .about-us-block .people-list > .people-item:first-child {
+    margin-left: 0;
+  }
+  .about-us-block .people-list > .people-item:last-child {
+    margin-right: 0;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1019px) {
   .about-us-block .people-list > .people-item {
     margin: 0 5px;
   }
+
+  .about-us-block .people-list > .people-item:first-child {
+    margin-left: 0;
+  }
+  .about-us-block .people-list > .people-item:last-child {
+    margin-right: 0;
+  }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
   .about-us-block .people-list {
     flex-wrap: wrap;
   }
 
   .about-us-block .people-list > .people-item {
-    margin-bottom: 20px;
+    margin-bottom: 34px;
+  }
+
+  .about-us-block .people-list > .people-item:first-child {
+    margin-top: 0;
+  }
+  .about-us-block .people-list > .people-item:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -1151,10 +1196,6 @@ body {
   /* justify-content: space-between; */
 }
 
-.quote-container .quote-form {
-  flex: 1 0 63.9%;
-}
-
 @media only screen and (min-width: 1020px) {
   .quote-container {
     margin-top: 44px;
@@ -1179,12 +1220,30 @@ body {
   }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
+  .quote-container {
+    margin-top: 27px;
 
+    flex-direction: column;
+  }
 }
 
-.quote-container .quote-form > fieldset {
-  margin-bottom: 16px;
+@media only screen and (min-width: 1020px) {
+  .quote-container .quote-form > fieldset {
+    margin-bottom: 14px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1019px) {
+  .quote-container .quote-form > fieldset {
+    margin-bottom: 17px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .quote-container .quote-form > fieldset {
+    margin-bottom: 14px;
+  }
 }
 
 .quote-container .quote-form > fieldset > input,
@@ -1206,6 +1265,12 @@ body {
   margin-bottom: 16px;
 
   line-height: 22px;
+}
+
+@media only screen and (max-width: 1019px) {
+  .quote-container .quote-form > fieldset > input {
+    margin-bottom: 12px;
+  }
 }
 
 .quote-container .quote-form > fieldset > input:required:valid {
@@ -1238,7 +1303,7 @@ body {
   -webkit-text-fill-color: #f0d8d9;
 }
 
-.quote-container .quote-form > button {
+/* .quote-container .quote-form > button {
   padding: 8px 15px;
 
   font-family: inherit;
@@ -1246,16 +1311,40 @@ body {
 
   background-color: #d6564f;
   border-radius: 5px;
+} */
+
+.quote-container .quote-form > button {
+  width: 136px;
+  height: 38px;
+
+  font-family: inherit;
+  font-weight: 700;
+  color: #886A30;
+  text-transform: uppercase;
+
+  background-color: #FBC65F;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+  .quote-container .quote-form > button {
+    width: 100%;
+    height: 50px;
+
+    margin-bottom: 32px;
+  }
 }
 
 .quote-container .quote-form > fieldset > input:hover,
-.quote-container .quote-form > fieldset > textarea:hover,
-.quote-container .quote-form > button:hover {
+.quote-container .quote-form > fieldset > textarea:hover {
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5), inset 0 0 0 50px #d6564f;
   transition: box-shadow 0.25s ease-in;
 }
 
 .quote-container .quote-form > button:hover {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.25s ease-in;
+
   cursor: pointer;
 }
 
@@ -1501,6 +1590,16 @@ body {
   font-size: 1.3rem;
   font-weight: 900;
   color: #666d89;
+}
+
+@media only screen and (max-width: 767px) {
+  .footer .footer-panel {
+    justify-content: center;
+  }
+
+  .footer .footer-panel > span {
+    display: none;
+  }
 }
 
 .footer .footer-panel > .footer-socials {
