@@ -188,10 +188,22 @@ body {
 
 .anchor-link {
   position: absolute;
+
   margin-top: -157px; /* -(headerHeight + sectionPaddingTop) */
 
   visibility: hidden;
 }
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (max-width: 767px) {
+  .anchor-link {
+    margin-top: -133px; /* -(headerHeight + sectionPaddingTop) */
+  }
+}
+
+
 
 /* carousel block */
 /* animation */

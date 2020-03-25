@@ -211,14 +211,25 @@ function handlerPageScroll(e) {
 
 // --------------------- Header section --------------------- //
 function handlerHeaderMenu(e) {
-  if (e.target.tagName !== 'A') return;
-  if (lastHeaderMenuActiveTab === e.target) return;
+  let target;
+  if (window.innerWidth <= 767) {
+    target = e.target.tagName === 'LI' ? e.target.firstElementChild : e.target;
+  } else {
+    if (e.target.tagName !== 'A') return;
+    target = e.target;
+  }
 
-  toggleActiveTab(lastHeaderMenuActiveTab, e.target);
+  if (lastHeaderMenuActiveTab === target) return;
 
-  lastHeaderMenuActiveTab = e.target;
+  toggleActiveTab(lastHeaderMenuActiveTab, target);
+
+  lastHeaderMenuActiveTab = target;
   lastHeaderMenuClickedTab = lastHeaderMenuActiveTab;
   isScrollEvent = false;
+
+  if (window.innerWidth <= 767) {
+    target.click(); // click on the item, to cause default event on the anchor
+  }
 }
 
 // --------------------- Slider section --------------------- //
