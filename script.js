@@ -512,13 +512,16 @@ function handlerQuoteHideModalWindowOkButton(e) {
 }
 
 function handlerQuoteHideModalWindowOuterArea(e) {
-  if (e.target.className !== 'modal-window') return;
+  if (e.target.className !== MODAL_WINDOW) return;
   togglePopUp(quoteModalWindow.firstElementChild, false); // hide
 }
 
 // Constants, Variables & Event registration
 // ------------------------- Common ------------------------- //
 const ACTIVE_NAME = 'active';
+const DISABLED = 'disabled'; // cursor-events: none;
+const HIDDEN = 'hidden'; // display: none;
+const MODAL_WINDOW = 'modal-window';
 
 const anchors = document.getElementsByClassName('anchor-link');
 window.addEventListener('scroll', handlerPageScroll);
@@ -562,8 +565,6 @@ const currentClass = {
 }
 const SLIDE = 'slide';
 const SLIDES = ['slide-1', 'slide-2'];
-const DISABLED = 'disabled'; // cursor-events: none;
-const HIDDEN = 'hidden';
 
 leftArrow.addEventListener('click', handlerLeftSlide);
 rightArrow.addEventListener('click', handlerRightSlide);
@@ -597,7 +598,7 @@ const quoteSubmitButton = document.getElementsByClassName('quote-form')[0].lastE
 const quoteDescriptionField = quoteSubmitButton.previousElementSibling.lastElementChild;
 const quoteSubjectField = quoteDescriptionField.previousElementSibling;
 
-const quoteModalWindow = document.getElementsByClassName('modal-window')[0];
+const quoteModalWindow = document.getElementsByClassName(MODAL_WINDOW)[0];
 
 const quoteModalWindowSubjectHeader = quoteModalWindow.firstElementChild.firstElementChild.nextElementSibling;
 const quoteModalWindowSubjectBody = quoteModalWindowSubjectHeader.nextElementSibling;
