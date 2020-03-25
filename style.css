@@ -118,6 +118,19 @@ body {
   align-items: baseline;
 }
 
+@media only screen and (max-width: 767px) {
+  .header__logo {
+    margin-left: calc(71px - 30px); /* left: 71px - wrapper's padding-left */
+  }
+}
+
+.header__logo {
+  z-index: 1;
+
+  text-decoration: none;
+  color: inherit;
+}
+
 .header h1 {
   /* to more fit layout */
   letter-spacing: -0.5px;
