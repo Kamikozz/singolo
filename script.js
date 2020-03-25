@@ -235,6 +235,7 @@ function handlerPageResize(e) {
     case 1: {
       // clear burger menu active classes
       burgerMenuLogoOpen.classList.remove(ACTIVE_NAME); // return singolo position
+      burgerMenuLogoOpenMargin.classList.remove(ACTIVE_NAME); // null singolo margins
       burgerMenuButtonOpen.classList.remove(ACTIVE_NAME); // remove rotate
       burgerMenuModalWindow.classList.add(HIDDEN); // remove shadow
       burgerMenuOpen.classList.remove(ACTIVE_NAME); // close burger menu
@@ -252,6 +253,7 @@ function handlerHeaderBurgerMenuButton(e) {
 
   burgerMenuButtonOpen.classList.toggle(ACTIVE_NAME);
   burgerMenuLogoOpen.classList.toggle(ACTIVE_NAME);
+  burgerMenuLogoOpenMargin.classList.toggle(ACTIVE_NAME);
 
   if (burgerMenuOpen.classList.value.indexOf(ACTIVE_NAME) !== -1) {
     burgerMenuOpen.style.animationName = ANIMATION_HIDE_BURGER;
@@ -576,6 +578,7 @@ const ANIMATION_HIDE_BURGER = 'hide-menu';
 const burgerMenuButton = document.getElementsByClassName('burger-button-block')[0];
 const burgerMenuButtonOpen = burgerMenuButton.firstElementChild;
 const burgerMenuLogoOpen = burgerMenuButton.parentElement;
+const burgerMenuLogoOpenMargin = document.getElementsByClassName('header__logo')[0];
 const burgerMenuOpen = document.getElementsByClassName('header__nav')[0];
 const burgerMenuModalWindow = document.getElementsByClassName(MODAL_WINDOW)[1];
 

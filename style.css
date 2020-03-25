@@ -195,8 +195,10 @@ body {
     transform: translateY(6.4px);
   } */
 
-  .header__logo {
-    margin-left: calc(71px - 30px); /* left: 71px - wrapper's padding-left */
+  .header__logo.active {
+    margin-left: 15px; /* 20px (padding-inner-content + 25px (inner-content) - 30px (wrapper's padding) */
+    transform: translateX(26px); /* left: 71px - (margin-left) - (wrapper's padding) */
+    transition: transform 0.5s ease-out;
   }
 }
 
