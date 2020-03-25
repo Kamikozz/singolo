@@ -333,6 +333,7 @@ body {
 .header__nav li a.active,
 .header__nav li a:hover {
   color: #f06c64;
+  transition: color 0.4s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .anchor-link {
