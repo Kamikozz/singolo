@@ -870,9 +870,6 @@ body {
 }
 
 .portfolio-block .wrapper > ul > li {
-  margin-right: 10px;
-  padding: 1px 6px;
-
   font-size: 1.2rem;
   line-height: 18px;
   color: #767e9e;
@@ -881,6 +878,20 @@ body {
   border-radius: 5px;
 
   user-select: none;
+}
+
+@media only screen and (min-width: 375px) {
+  .portfolio-block .wrapper > ul > li {
+    margin-right: 10px;
+    padding: 1px 6px;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .portfolio-block .wrapper > ul > li {
+    margin-right: 4px;
+    padding: 1px 4px;
+  }
 }
 
 .portfolio-block .wrapper > ul > li:hover {
