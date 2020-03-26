@@ -292,6 +292,7 @@ function handlerHeaderMenu(e) {
 
   if (window.innerWidth <= 767) {
     target.click(); // click on the item, to cause default event on the anchor
+    handlerHeaderBurgerMenuButton(); // close burger menu
   }
 }
 
